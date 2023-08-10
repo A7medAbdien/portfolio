@@ -1,4 +1,4 @@
-import { OrbitControls, Text } from '@react-three/drei'
+import { Html, OrbitControls, Text } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
@@ -7,12 +7,12 @@ export default function Experience() {
 
     const { viewport } = useThree()
     const { width, height } = viewport
-    const { navPos, pos, namePos } = useControls({
-        // pos: {
-        //     value: { x: 0, y: 1.4 },
-        //     joystick: 'invertY',
-        //     step: 0.01,
-        // },
+    const { navPos, scrollPos, namePos } = useControls({
+        scrollPos: {
+            value: { x: 0, y: (- height / 2) + 0.2 },
+            joystick: 'invertY',
+            step: 0.01,
+        },
         namePos: {
             value: { x: 0, y: 1 },
             joystick: 'invertY',
@@ -32,7 +32,6 @@ export default function Experience() {
         lineHeight: 1,
         'material-toneMapped': false
     }
-    console.log(viewport.width);
 
     return <>
 
@@ -67,6 +66,26 @@ export default function Experience() {
                 </Text >
         </group> */}
 
+
+        <group
+            position={[scrollPos.x, scrollPos.y, 0]}
+        >
+            <Text position={[0, 0.2, 0]} {...fontProps} font=''>
+                Scroll
+            </Text >
+            <Html
+                transform
+                scale={0.1}
+                position={[-0.1, -0.1, 0]}
+            >
+
+                <div className="downArrow bounce">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32">
+                        <path fill="#fff" d="M24.285,11.284L16,19.571l-8.285-8.287L6,12.999L16,23l10-10.001L24.285,11.284z" rx="5" ry="5" />
+                    </svg>
+                </div>
+            </Html>
+        </group>
         <axesHelper args={[5]} />
 
         {/* <mesh scale={1.5}>
