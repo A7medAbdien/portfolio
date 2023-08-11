@@ -4,6 +4,8 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
 import IntroPage from './components/IntroPage'
+import Divider from './components/Divider'
+import ProfilePage from './components/ProfilePage'
 
 export default function Experience() {
 
@@ -43,6 +45,7 @@ const Pages = ({ pagesNum }) => {
         {/*
             PAGE 1: Profile & Skills
         */}
+        <ProfilePage />
 
         {/* 
             PAGE 2: Projects 

@@ -4,13 +4,14 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
 import ScrollArrow from './ScrollArrow/ScrollArrow'
+import Divider from './Divider'
 
 
 export default function IntroPage({ showScroll }) {
 
     const { viewport } = useThree()
     const { height } = viewport
-    const { dividerPos, jopTitlePos, scrollPos, namePos } = useControls({
+    const { introPageDividerPos, jopTitlePos, scrollPos, namePos } = useControls({
         scrollPos: {
             value: { x: 0, y: (- height / 2) + 0.2 },
             joystick: 'invertY',
@@ -26,8 +27,8 @@ export default function IntroPage({ showScroll }) {
             joystick: 'invertY',
             step: 0.01,
         },
-        dividerPos: {
-            value: { x: 0, y: (- height / 2) },
+        introPageDividerPos: {
+            value: { x: 0, y: - (height / 2) },
             joystick: 'invertY',
             step: 0.01,
         },
@@ -72,7 +73,6 @@ export default function IntroPage({ showScroll }) {
 
         {showScroll && <ScrollArrow x={scrollPos.x} y={scrollPos.y} />}
 
-        <Line position={[dividerPos.x, dividerPos.y, 0]} points={points} color={'#fff'} lineWidth={2} />
-
+        <Divider y={introPageDividerPos.y} />
     </>
 }
