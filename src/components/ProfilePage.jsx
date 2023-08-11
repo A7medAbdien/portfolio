@@ -10,19 +10,19 @@ export default function ProfilePage({ }) {
     const pagePadding = - (height / 2)
     const { dividerPos, profilePos, canDoPos, skillPos } = useControls({
         profilePos: {
-            value: 0.3,
+            value: 0.81,
             step: 0.01,
         },
         canDoPos: {
-            value: 1.6,
+            value: 2.42,
             step: 0.01,
         },
         skillPos: {
-            value: 3,
+            value: 4.18,
             step: 0.01,
         },
         dividerPos: {
-            value: -1.5 * height,
+            value: 1.66,
             step: 0.01,
         },
     })
@@ -93,7 +93,7 @@ export default function ProfilePage({ }) {
             </Text >
         </group>
 
-        <Divider y={dividerPos} />
+        <Divider y={(-1.5 * height) - dividerPos} />
 
     </>
 };
