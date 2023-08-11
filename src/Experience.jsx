@@ -1,10 +1,37 @@
-import { Html, OrbitControls, Text } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
+import { useState } from 'react'
+import { Html, OrbitControls, Scroll, ScrollControls, Text, useScroll } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
 import ScrollArrow from './components/ScrollArrow/ScrollArrow'
 
 export default function Experience() {
+
+    const pagesNum = 5
+
+    return <>
+
+        <Perf position="top-left" />
+
+        {/* <OrbitControls makeDefault /> */}
+
+        <ScrollControls damping={0} pages={pagesNum} >
+            <Scroll style={{ overflowX: 'hidden' }}>
+                <Pages pagesNum={pagesNum} />
+            </Scroll>
+        </ScrollControls>
+
+        <axesHelper args={[5]} />
+    </>
+}
+
+const Pages = ({ pagesNum }) => {
+    const data = useScroll()
+    const [showScroll, setShowScroll] = useState(true)
+    useFrame(() => {
+        if (data.offset < (1 / pagesNum) / 20) setShowScroll(true)
+        else setShowScroll(false)
+    })
 
     const { viewport } = useThree()
     const { width, height } = viewport
@@ -24,11 +51,6 @@ export default function Experience() {
             joystick: 'invertY',
             step: 0.01,
         },
-        // navPos: {
-        //     value: { x: (width / 2) - 0.1, y: 0 },
-        //     joystick: 'invertY',
-        //     step: 0.01,
-        // }
     })
 
     const fontProps = {
@@ -40,11 +62,6 @@ export default function Experience() {
     }
 
     return <>
-
-        <Perf position="top-left" />
-
-        <OrbitControls makeDefault />
-
         <group position={[namePos.x, namePos.y, 0]}>
             <Text
                 {...fontProps}
@@ -67,27 +84,6 @@ export default function Experience() {
             </Text >
         </group>
 
-        {/* <group rotation={[0, 0, Math.PI / 2]} position={[navPos.x, navPos.y, 0]}>
-                <Text position={[-0.4 * height / 3, 0, 0]} {...fontProps}>
-                    Hi
-                </Text >
-                <Text color={"red"} {...fontProps}>
-                    PROJECTS
-                </Text >
-                <Text position={[0.4 * height / 3, 0, 0]} {...fontProps}>
-                    CV
-                </Text >
-        </group> */}
-
-
-        <ScrollArrow x={scrollPos.x} y={scrollPos.y} />
-
-        <axesHelper args={[5]} />
-
-        {/* <mesh scale={1.5}>
-            <boxGeometry />
-            <meshNormalMaterial />
-        </mesh> */}
-
+        {showScroll && <ScrollArrow x={scrollPos.x} y={scrollPos.y} />}
     </>
 }
