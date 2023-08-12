@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { useRef, useState, createRef, forwardRef } from 'react'
-import { Box, Html, Line, OrbitControls, Scroll, ScrollControls, Text, useScroll } from '@react-three/drei'
+import { Box, Cloud, Html, Line, OrbitControls, Scroll, ScrollControls, Text, useScroll } from '@react-three/drei'
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
@@ -11,75 +11,54 @@ import ProfilePage from './components/ProfilePage'
 export default function Experience() {
 
     const pagesNum = 4
-
-    return <>
-
-        {/* <Perf position="top-left" /> */}
-
-        <OrbitControls makeDefault />
-
-        {/* <ScrollControls damping={0} pages={pagesNum} >
-            <Scroll>
-                <Pages pagesNum={pagesNum} />
-            </Scroll>
-        </ScrollControls> */}
-
-        <Smokey />
-        <Smoke />
-        <directionalLight color="#fff" intensity={0.3} position={[-1, 0, 1]} />
-
-        <axesHelper args={[5]} />
-    </>
-}
-
-const Smokey = forwardRef((props, ref) => {
-
-    const url = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png'
-    const smokeTexture = useLoader(THREE.TextureLoader, url)
-    console.log("j");
-    return <>
-        <mesh rot ref={ref} {...props}>
-            <planeGeometry args={[2.5, 2.5]} />
-            <meshLambertMaterial color={'#00dddd'} map={smokeTexture} transparent />
-        </mesh>
-    </>
-})
-
-const Smoke = () => {
-    const count = 150
-    const refs = useRef(
-        Array.from({ length: count }).map(() => createRef())
-    );
-
-    useFrame((state, delta) => {
-        refs.current.forEach((ref, index) => {
-            // console.log("hi");
-            ref.current.rotation.z += (delta * 0.2)
-        })
-
+    const cloudCount = Array(pagesNum).fill(0)
+    const { viewport } = useThree()
+    const { width, height } = viewport
+    const { cloudPos } = useControls({
+        cloudPos: {
+            value: { x: width / 2.5, y: 0 },
+            joystick: 'invertY',
+            step: 0.1,
+        },
     })
 
+    const cloudProps = {
+        speed: 0.25,
+        opacity: "1",
+        depth: "1",
+        width: "1",
+        segments: "4"
+    }
     return <>
-        <group scale={1}>
-            {
-                refs.current.map((ref, index) => {
-                    console.log("j");
-                    return < Smokey
-                        ref={ref}
-                        key={index}
-                        position={
-                            [
-                                Math.random() * 4 - 2,
-                                Math.random() * 4 - 2,
-                                Math.random() * 10 - 1
-                            ]}
-                        rotation={[0, 0, Math.random() * 360]}
+
+        <Perf position="top-left" />
+
+        {/* <OrbitControls makeDefault /> */}
+
+        <ScrollControls damping={0} pages={pagesNum} >
+            <Scroll>
+                <Pages pagesNum={pagesNum} />
+                {cloudCount.map((_, i) => <>
+                    < Cloud
+                        {...cloudProps}
+                        position={[cloudPos.x, -i * height, 0]}
                     />
-                })
-            }
-        </group>
+                    < Cloud
+                        {...cloudProps}
+                        position={[-cloudPos.x, -i * height, 0]}
+                    />
+                </>)}
+            </Scroll>
+        </ScrollControls>
+
+
+
+        <directionalLight color="#fff" intensity={0.3} position={[-1, 0, 1]} />
+
+        {/* <axesHelper args={[5]} /> */}
     </>
 }
+
 
 
 
