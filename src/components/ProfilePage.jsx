@@ -10,15 +10,15 @@ export default function ProfilePage({ pageOffset }) {
 
     const { dividerPos, profilePos, canDoPos, skillPos } = useControls({
         profilePos: {
-            value: 0.5,
+            value: pageOffset - 0.5,
             step: 0.01,
         },
         canDoPos: {
-            value: 2,
+            value: pageOffset - 2,
             step: 0.01,
         },
         skillPos: {
-            value: 3.8,
+            value: pageOffset - 3.8,
             step: 0.01,
         },
         dividerPos: {
@@ -42,10 +42,9 @@ export default function ProfilePage({ pageOffset }) {
         'material-toneMapped': false
     }
 
-    console.log(height);
 
     return <>
-        <group position={[0, (pageOffset - profilePos), 0]} >
+        <group position={[0, profilePos, 0]} >
             <Text
                 position={[0, width < 4.5 ? 0.2 : 0, 0]}
                 {...headlineFontProps}>
@@ -63,7 +62,7 @@ export default function ProfilePage({ pageOffset }) {
             </Text >
         </group>
 
-        <group position={[0, pageOffset - canDoPos, 0]}>
+        <group position={[0, canDoPos, 0]}>
             <Text {...headlineFontProps} letterSpacing={-0.01}>
                 {"{ WHAT I CAN DO  }"}
             </Text >
@@ -81,7 +80,7 @@ export default function ProfilePage({ pageOffset }) {
             </Text >
         </group>
 
-        <group position={[0, (pageOffset - skillPos), 0]}>
+        <group position={[0, skillPos, 0]}>
             <Text {...headlineFontProps} letterSpacing={-0.01}>
                 {"{ SKILLS  }"}
             </Text >

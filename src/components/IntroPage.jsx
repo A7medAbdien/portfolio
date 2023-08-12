@@ -12,8 +12,8 @@ export default function IntroPage({ showScroll }) {
     const { viewport } = useThree()
     const { height } = viewport
     const { introPageDividerPos, jopTitlePos, scrollPos, namePos } = useControls({
-        scrollPos: {
-            value: { x: 0, y: (- height / 2) + 0.2 },
+        namePos: {
+            value: { x: 0, y: 1 },
             joystick: 'invertY',
             step: 0.01,
         },
@@ -22,8 +22,8 @@ export default function IntroPage({ showScroll }) {
             joystick: 'invertY',
             step: 0.01,
         },
-        namePos: {
-            value: { x: 0, y: 1 },
+        scrollPos: {
+            value: { x: 0, y: (- height / 2) + 0.2 },
             joystick: 'invertY',
             step: 0.01,
         },
@@ -41,11 +41,6 @@ export default function IntroPage({ showScroll }) {
         lineHeight: 1,
         'material-toneMapped': false
     }
-
-    const points = [
-        [-0.3, 0, 0],
-        [0.3, 0, 0],
-    ]
 
     return <>
         <group scale={0.8}>
