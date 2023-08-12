@@ -11,6 +11,8 @@ import Divider from './components/Divider'
 import ProfilePage from './components/ProfilePage'
 import Smoke from './components/Smoke'
 import Clouds from './components/ScrollArrow/Clouds'
+import ProjectsPage from './components/ProjectsPage'
+
 
 export default function Experience() {
 
@@ -37,11 +39,11 @@ export default function Experience() {
                 <group scale={pagesScale} position={[0, pagesPos.y, pagesPos.z]}>
                     <Pages pagesNum={pagesNum} />
                 </group>
-                <Clouds count={pagesNum} />
+                {/* <Clouds count={pagesNum} /> */}
             </Scroll>
         </ScrollControls >
 
-        <Smoke />
+        {/* <Smoke /> */}
 
         <directionalLight color="#fff" intensity={0.3} position={[-1, 0, 1]} />
 
@@ -77,7 +79,7 @@ const Pages = ({ pagesNum }) => {
         {/* 
             PAGE 2: Projects 
         */}
-
+        <ProjectsPage pageOffset={- 2.5 * height} />
 
         {/*
             PAGE 3: CV
