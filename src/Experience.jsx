@@ -79,7 +79,7 @@ const Pages = ({ pagesNum }) => {
         {/* 
             PAGE 2: Projects 
         */}
-        <ProjectsPage pageOffset={- 2.5 * height} />
+        <ProjectsPage pageOffset={- 2 * height} />
 
         {/*
             PAGE 3: CV

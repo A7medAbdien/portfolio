@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { useEffect, useRef, useState } from 'react'
-import { Box, CameraControls, Html, Line, MeshPortalMaterial, Text, useCursor } from '@react-three/drei'
+import { Box, CameraControls, Html, Line, MeshPortalMaterial, Sphere, Text, Torus, useCursor } from '@react-three/drei'
 import { extend, useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
@@ -9,17 +9,18 @@ import { easing, geometry } from 'maath'
 
 import ScrollArrow from './ScrollArrow/ScrollArrow'
 import Divider from './Divider'
+import calcMaxWidth from '../Utils/calcMaxWidth'
+import headlineFontProps from '../Utils/headlineFontProps'
 
 extend(geometry)
 
 export default function ProjectsPage({ pageOffset }) {
 
     const { viewport } = useThree()
-    const { height } = viewport
-    const { projectsPageDividerPos, jopTitlePos, scrollPos, namePos } = useControls({
-        namePos: {
-            value: { x: 0, y: pageOffset - 1 },
-            joystick: 'invertY',
+    const { width, height } = viewport
+    const { projectsPageDividerPos, jopTitlePos, scrollPos, titlePos } = useControls({
+        titlePos: {
+            value: 1.2,
             step: 0.01,
         },
         jopTitlePos: {
@@ -33,24 +34,31 @@ export default function ProjectsPage({ pageOffset }) {
             step: 0.01,
         },
         projectsPageDividerPos: {
-            value: { x: 0, y: pageOffset - (height / 2) },
-            joystick: 'invertY',
+            value: 0.5,
             step: 0.01,
         },
     })
 
-    const fontProps = {
-        font: 'fonts/SaolDisplay-Regular.woff',
-        fontSize: 0.1,
-        letterSpacing: 0,
-        lineHeight: 1,
-        'material-toneMapped': false
-    }
 
     return <>
-        <group >
-            <Frame id="02" name="tea" bg="#e4cdac" author="Omar Faruq Tawsif">
+        <group position={[0, pageOffset, 0]} >
+            {/* <Box position={[0, 0, 0]} /> */}
+
+            <group position={[0, titlePos, 0]} >
+                <Text
+                    {...headlineFontProps}>
+                    {"{ MY WORK }"}
+                </Text >
+            </group>
+
+            <Frame id="01" width={calcMaxWidth(width)} height={height / 6} name="ArtMixer" bg="#e4cdac" >
                 <Box position={[0, 0, -5]} />
+            </Frame>
+            <Frame id="02" width={calcMaxWidth(width)} height={height / 6} name="SafeDistance" bg="#d1d1ca" position={[0, -height / 3, 0]}>
+                <Sphere position={[0, 0, -5]} />
+            </Frame>
+            <Frame id="03" width={calcMaxWidth(width)} height={height / 6} name="ToxicTweets" bg="#c8daf7" position={[0, -4 * height / 6, 0]}>
+                <Torus position={[0, 0, -5]} />
             </Frame>
 
             <Rig />
@@ -60,6 +68,8 @@ export default function ProjectsPage({ pageOffset }) {
 
 
 function Frame({ id, name, author, bg, width = 1, height = 1.61803398875, children, ...props }) {
+    const { viewport } = useThree()
+    const { width: viewportWidth } = viewport
     const portal = useRef()
     const [, setLocation] = useLocation()
     const [, params] = useRoute('/item/:id')
@@ -68,14 +78,11 @@ function Frame({ id, name, author, bg, width = 1, height = 1.61803398875, childr
     useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, 0.2, dt))
     return (
         <group {...props}>
-            <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.375, 0.715, 0.01]} material-toneMapped={false}>
+            <Text {...headlineFontProps} fontSize={viewportWidth < 4.5 ? 0.25 : 0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-width / 2 + 0.1, 0.14, 0.01]} >
                 {name}
             </Text>
-            <Text fontSize={0.1} anchorX="right" position={[0.4, -0.659, 0.01]} material-toneMapped={false}>
+            <Text {...headlineFontProps} anchorX="right" position={[width / 2 - 0.1, -height / 2 + 0.11, 0.01]} >
                 /{id}
-            </Text>
-            <Text fontSize={0.04} anchorX="right" position={[0.0, -0.677, 0.01]} material-toneMapped={false}>
-                {author}
             </Text>
             <mesh name={id} onClick={(e) => (e.stopPropagation(), setLocation('/item/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
                 <roundedPlaneGeometry args={[width, height]} />
