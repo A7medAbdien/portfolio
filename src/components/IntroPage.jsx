@@ -37,7 +37,7 @@ export default function IntroPage({ showScroll }) {
     const fontProps = {
         font: 'fonts/SaolDisplay-Regular.woff',
         fontSize: 0.1,
-        letterSpacing: -0.05,
+        letterSpacing: 0,
         lineHeight: 1,
         'material-toneMapped': false
     }
@@ -58,6 +58,7 @@ export default function IntroPage({ showScroll }) {
 
             <Text
                 {...fontProps}
+                letterSpacing={-0.05}
                 fontSize={0.4}>
                 AHMED.A
             </Text >
@@ -66,8 +67,14 @@ export default function IntroPage({ showScroll }) {
         <group position={[jopTitlePos.x, jopTitlePos.y, 0]}>
             <Text
                 {...fontProps}
-                fontSize={0.2}>
-                Software Developer
+                fontSize={0.15}>
+                SOFTWARE  DEVELOPER
+            </Text >
+
+            <Text
+                {...fontProps}
+                position={[0, -0.2, 0]}>
+                {"{ BASED IN BAHRAIN }"}
             </Text >
         </group>
 

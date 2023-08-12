@@ -37,10 +37,11 @@ export default function ProfilePage({ }) {
     const contentFontProps = {
         fontSize: 0.1,
         lineHeight: 1.2,
-        maxWidth: width / 2,
+        maxWidth: width / 2 < 1.5 ? 1.5 : width / 2,
         textAlign: 'left',
         'material-toneMapped': false
     }
+
     return <>
         <group position={[0, pagePadding - profilePos, 0]} >
             <Text {...headlineFontProps}>
@@ -49,10 +50,10 @@ export default function ProfilePage({ }) {
 
             <Text
                 {...contentFontProps}
+                textAlign='justify'
                 position={[0, - 0.51, 0]}
             >
                 Hi, I'm Ahmed Abdin, a Software Developer based in Bahrain.
-                {'\n'}
                 I'm always inspired by the great websites, apps and analysis from all over the world.
                 My current goal is to win an award for my work.
             </Text >

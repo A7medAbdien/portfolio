@@ -23,7 +23,7 @@ export default function Experience() {
             </Scroll>
         </ScrollControls>
 
-        <axesHelper args={[5]} />
+        {/* <axesHelper args={[5]} /> */}
     </>
 }
 
