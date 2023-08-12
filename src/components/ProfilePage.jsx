@@ -37,14 +37,16 @@ export default function ProfilePage({ }) {
     const contentFontProps = {
         fontSize: 0.1,
         lineHeight: 1.2,
-        maxWidth: width / 2 < 1.5 ? 1.5 : width / 2,
+        maxWidth: width < 4.5 ? 4.5 / 3 : width / 3,
         textAlign: 'left',
         'material-toneMapped': false
     }
 
     return <>
         <group position={[0, pagePadding - profilePos, 0]} >
-            <Text {...headlineFontProps}>
+            <Text
+                position={[0, width < 4.5 ? 0.2 : 0, 0]}
+                {...headlineFontProps}>
                 {"{ PROFILE }"}
             </Text >
 

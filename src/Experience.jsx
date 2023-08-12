@@ -4,31 +4,28 @@ import { Box, Cloud, Html, Line, OrbitControls, Scroll, ScrollControls, Text, us
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
+import { easing } from 'maath'
+
 import IntroPage from './components/IntroPage'
 import Divider from './components/Divider'
 import ProfilePage from './components/ProfilePage'
+import Smoke from './components/Smoke'
+import Clouds from './components/ScrollArrow/Clouds'
 
 export default function Experience() {
 
     const pagesNum = 4
-    const cloudCount = Array(pagesNum).fill(0)
-    const { viewport } = useThree()
-    const { width, height } = viewport
-    const { cloudPos } = useControls({
-        cloudPos: {
-            value: { x: width / 2.5, y: 0 },
-            joystick: 'invertY',
+    const { pagesScale, pagesPos } = useControls({
+        pagesPos: {
+            value: { y: 0.2, z: 2.5 },
             step: 0.1,
+        },
+        pagesScale: {
+            value: 0.85,
+            step: 0.01,
         },
     })
 
-    const cloudProps = {
-        speed: 0.25,
-        opacity: "1",
-        depth: "1",
-        width: "1",
-        segments: "4"
-    }
     return <>
 
         <Perf position="top-left" />
@@ -37,29 +34,20 @@ export default function Experience() {
 
         <ScrollControls damping={0} pages={pagesNum} >
             <Scroll>
-                <Pages pagesNum={pagesNum} />
-                {cloudCount.map((_, i) => <>
-                    < Cloud
-                        {...cloudProps}
-                        position={[cloudPos.x, -i * height, 0]}
-                    />
-                    < Cloud
-                        {...cloudProps}
-                        position={[-cloudPos.x, -i * height, 0]}
-                    />
-                </>)}
+                <group scale={pagesScale} position={[0, pagesPos.y, pagesPos.z]}>
+                    <Pages pagesNum={pagesNum} />
+                </group>
+                <Clouds count={pagesNum} />
             </Scroll>
-        </ScrollControls>
+        </ScrollControls >
 
-
+        <Smoke />
 
         <directionalLight color="#fff" intensity={0.3} position={[-1, 0, 1]} />
 
-        {/* <axesHelper args={[5]} /> */}
+        <axesHelper args={[5]} />
     </>
 }
-
-
 
 
 const Pages = ({ pagesNum }) => {

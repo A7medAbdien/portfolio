@@ -48,38 +48,40 @@ export default function IntroPage({ showScroll }) {
     ]
 
     return <>
+        <group scale={0.8}>
 
-        <group position={[namePos.x, namePos.y, 0]}>
-            <Text
-                {...fontProps}
-                position={[0, 0.4, 0]}>
-                {"{ PORTFOLIO }"}
-            </Text >
+            <group position={[namePos.x, namePos.y, 0]}>
+                <Text
+                    {...fontProps}
+                    position={[0, 0.4, 0]}>
+                    {"{ PORTFOLIO }"}
+                </Text >
 
-            <Text
-                {...fontProps}
-                letterSpacing={-0.05}
-                fontSize={0.4}>
-                AHMED.A
-            </Text >
+                <Text
+                    {...fontProps}
+                    letterSpacing={-0.05}
+                    fontSize={0.4}>
+                    AHMED.A
+                </Text >
+            </group>
+
+            <group position={[jopTitlePos.x, jopTitlePos.y, 0]}>
+                <Text
+                    {...fontProps}
+                    fontSize={0.15}>
+                    SOFTWARE  DEVELOPER
+                </Text >
+
+                <Text
+                    {...fontProps}
+                    position={[0, -0.2, 0]}>
+                    {"{ BASED IN BAHRAIN }"}
+                </Text >
+            </group>
+
+            {showScroll && <ScrollArrow x={scrollPos.x} y={scrollPos.y} />}
+
+            <Divider y={introPageDividerPos.y} />
         </group>
-
-        <group position={[jopTitlePos.x, jopTitlePos.y, 0]}>
-            <Text
-                {...fontProps}
-                fontSize={0.15}>
-                SOFTWARE  DEVELOPER
-            </Text >
-
-            <Text
-                {...fontProps}
-                position={[0, -0.2, 0]}>
-                {"{ BASED IN BAHRAIN }"}
-            </Text >
-        </group>
-
-        {showScroll && <ScrollArrow x={scrollPos.x} y={scrollPos.y} />}
-
-        <Divider y={introPageDividerPos.y} />
     </>
 }
