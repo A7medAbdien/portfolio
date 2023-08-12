@@ -3,26 +3,26 @@ import { useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import Divider from './Divider'
 
-export default function ProfilePage({ }) {
+export default function ProfilePage({ pageOffset }) {
 
     const { viewport } = useThree()
     const { width, height } = viewport
-    const pagePadding = - (height / 2)
+
     const { dividerPos, profilePos, canDoPos, skillPos } = useControls({
         profilePos: {
-            value: 0.81,
+            value: 0.5,
             step: 0.01,
         },
         canDoPos: {
-            value: 2.42,
+            value: 2,
             step: 0.01,
         },
         skillPos: {
-            value: 4.18,
+            value: 3.8,
             step: 0.01,
         },
         dividerPos: {
-            value: 1.66,
+            value: 0.5,
             step: 0.01,
         },
     })
@@ -37,13 +37,15 @@ export default function ProfilePage({ }) {
     const contentFontProps = {
         fontSize: 0.1,
         lineHeight: 1.2,
-        maxWidth: width < 4.5 ? 4.5 / 3 : width / 3,
+        maxWidth: width < 4.5 ? 4.5 / 3 : width > 10 ? 10 / 3 : width / 3,
         textAlign: 'left',
         'material-toneMapped': false
     }
 
+    console.log(height);
+
     return <>
-        <group position={[0, pagePadding - profilePos, 0]} >
+        <group position={[0, (pageOffset - profilePos), 0]} >
             <Text
                 position={[0, width < 4.5 ? 0.2 : 0, 0]}
                 {...headlineFontProps}>
@@ -61,7 +63,7 @@ export default function ProfilePage({ }) {
             </Text >
         </group>
 
-        <group position={[0, pagePadding - canDoPos, 0]}>
+        <group position={[0, pageOffset - canDoPos, 0]}>
             <Text {...headlineFontProps} letterSpacing={-0.01}>
                 {"{ WHAT I CAN DO  }"}
             </Text >
@@ -79,7 +81,7 @@ export default function ProfilePage({ }) {
             </Text >
         </group>
 
-        <group position={[0, pagePadding - skillPos, 0]}>
+        <group position={[0, (pageOffset - skillPos), 0]}>
             <Text {...headlineFontProps} letterSpacing={-0.01}>
                 {"{ SKILLS  }"}
             </Text >

@@ -14,7 +14,7 @@ import Clouds from './components/ScrollArrow/Clouds'
 
 export default function Experience() {
 
-    const pagesNum = 4
+    const pagesNum = 5
     const { pagesScale, pagesPos } = useControls({
         pagesPos: {
             value: { y: 0.2, z: 2.5 },
@@ -32,7 +32,7 @@ export default function Experience() {
 
         {/* <OrbitControls makeDefault /> */}
 
-        <ScrollControls damping={0} pages={pagesNum} >
+        <ScrollControls damping={1} pages={pagesNum} >
             <Scroll>
                 <group scale={pagesScale} position={[0, pagesPos.y, pagesPos.z]}>
                     <Pages pagesNum={pagesNum} />
@@ -52,6 +52,10 @@ export default function Experience() {
 
 const Pages = ({ pagesNum }) => {
     const data = useScroll()
+
+    const { viewport } = useThree()
+    const { width, height } = viewport
+
     const [showScroll, setShowScroll] = useState(true)
     useFrame(() => {
         if (data.offset < (1 / pagesNum) / 20) setShowScroll(true)
@@ -68,11 +72,12 @@ const Pages = ({ pagesNum }) => {
         {/*
             PAGE 1: Profile & Skills
         */}
-        <ProfilePage />
+        <ProfilePage pageOffset={- (height / 2)} />
 
         {/* 
             PAGE 2: Projects 
         */}
+
 
         {/*
             PAGE 3: CV

@@ -16,7 +16,7 @@ const Clouds = ({ }) => {
 
     const cloudProps = {
         speed: 0.25,
-        opacity: "1",
+        opacity: "0.7",
         depth: "1",
         width: "1",
         segments: "4"
