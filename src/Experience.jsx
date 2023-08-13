@@ -43,11 +43,11 @@ export default function Experience() {
             </Scroll>
         </ScrollControls >
 
-        {/* <Smoke /> */}
+        <CursorSmoke />
 
-        <ambientLight color="#fff" intensity={2} />
+        {/* <ambientLight color="#fff" intensity={2} /> */}
 
-        {/* <directionalLight color="#fff" intensity={1} position={[-1, 0, 1]} /> */}
+        <directionalLight color="#fff" intensity={0.8} position={[-1, 0, 1]} />
 
         <axesHelper args={[5]} />
     </>
@@ -71,18 +71,18 @@ const Pages = ({ pagesNum }) => {
         {/* 
             PAGE 0: intro
         */}
-        {/* <IntroPage showScroll={showScroll} /> */}
+        <IntroPage showScroll={showScroll} />
 
         {/*
             PAGE 1: Profile & Skills
         */}
-        {/* <ProfilePage pageOffset={- (height / 2)} /> */}
+        <ProfilePage pageOffset={- (height / 2)} />
 
         {/* 
             PAGE 2: Projects 
         */}
-        <ProjectsPage pageOffset={0} />
-        {/* <ProjectsPage pageOffset={- 2 * height} /> */}
+        {/* <ProjectsPage pageOffset={0} /> */}
+        <ProjectsPage pageOffset={- 2 * height} />
 
         {/*
             PAGE 3: CV

@@ -3,7 +3,7 @@ import { useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import Divider from './Divider'
 import calcMaxWidth from '../Utils/calcMaxWidth'
-import headlineFontProps from '../Utils/headlineFontProps'
+import { HeadlineFontProps, ContentFontProps } from '../Utils/fontProps'
 
 export default function ProfilePage({ pageOffset }) {
 
@@ -30,11 +30,7 @@ export default function ProfilePage({ pageOffset }) {
     })
 
     const contentFontProps = {
-        fontSize: 0.1,
-        lineHeight: 1.2,
-        maxWidth: calcMaxWidth(width),
-        textAlign: 'left',
-        'material-toneMapped': false
+        ...ContentFontProps(width),
     }
 
     return <>
@@ -42,7 +38,7 @@ export default function ProfilePage({ pageOffset }) {
             <group position={[0, profilePos, 0]} >
                 <Text
                     position={[0, width < 4.5 ? 0.2 : 0, 0]}
-                    {...headlineFontProps}>
+                    {...HeadlineFontProps}>
                     {"{ PROFILE }"}
                 </Text >
 
@@ -58,7 +54,7 @@ export default function ProfilePage({ pageOffset }) {
             </group>
 
             <group position={[0, canDoPos, 0]}>
-                <Text {...headlineFontProps} letterSpacing={-0.01}>
+                <Text {...HeadlineFontProps} letterSpacing={-0.01}>
                     {"{ WHAT I CAN DO  }"}
                 </Text >
 
@@ -76,7 +72,7 @@ export default function ProfilePage({ pageOffset }) {
             </group>
 
             <group position={[0, skillPos, 0]}>
-                <Text {...headlineFontProps} letterSpacing={-0.01}>
+                <Text {...HeadlineFontProps} letterSpacing={-0.01}>
                     {"{ SKILLS  }"}
                 </Text >
 

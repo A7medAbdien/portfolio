@@ -10,7 +10,7 @@ import { easing, geometry } from 'maath'
 import ScrollArrow from './ScrollArrow/ScrollArrow'
 import Divider from './Divider'
 import calcMaxWidth from '../Utils/calcMaxWidth'
-import headlineFontProps from '../Utils/headlineFontProps'
+import { HeadlineFontProps } from '../Utils/fontProps'
 import Clouds from './Clouds'
 import InnerClouds from './InnerClouds'
 
@@ -40,8 +40,6 @@ export default function ProjectsPage({ pageOffset }) {
             step: 0.01,
         },
     })
-    console.log("ji");
-
 
     return <>
         <group position={[0, pageOffset, 0]} >
@@ -49,24 +47,30 @@ export default function ProjectsPage({ pageOffset }) {
 
             <group position={[0, titlePos, 0]} >
                 <Text
-                    {...headlineFontProps}>
+                    {...HeadlineFontProps}>
                     {"{ MY  WORK }"}
                 </Text >
             </group>
 
 
-            <Frame id="01" width={calcMaxWidth(width)} height={height / 6} name="ArtMixer" bg="#fff" >
-
+            <Frame id="01" width={calcMaxWidth(width)} height={height / 6} name="ArtMixer"  >
                 <InnerClouds count={1} />
-                <ambientLight color="black" intensity={0.8} />
+                <ambientLight color="red" intensity={0.8} />
+                <mesh>
+                    <meshBasicMaterial />
+                    <roundedPlaneGeometry args={[1, 1]} />
+                </mesh>
             </Frame>
 
-            {/* <Frame id="02" width={calcMaxWidth(width)} height={height / 6} name="SafeDistance" bg="#d1d1ca" position={[0, -height / 3, 0]}>
-                <Sphere position={[0, 0, -5]} />
+            <Frame id="02" width={calcMaxWidth(width)} height={height / 6} name="SafeDistance" position={[0, -height / 3, 0]}>
+                <InnerClouds count={1} />
+                <ambientLight color="green" intensity={0.8} />
             </Frame>
-            <Frame id="03" width={calcMaxWidth(width)} height={height / 6} name="ToxicTweets" bg="#c8daf7" position={[0, -4 * height / 6, 0]}>
-                <Torus position={[0, 0, -5]} />
-            </Frame> */}
+
+            <Frame id="03" width={calcMaxWidth(width)} height={height / 6} name="ToxicTweets" position={[0, -4 * height / 6, 0]}>
+                <InnerClouds count={1} />
+                <ambientLight color="blue" intensity={0.8} />
+            </Frame>
 
             <Rig />
         </group>
@@ -74,7 +78,7 @@ export default function ProjectsPage({ pageOffset }) {
 }
 
 
-function Frame({ id, name, author, bg, width = 1, height = 1.61803398875, children, ...props }) {
+function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.61803398875, children, color = 'black', ...props }) {
     const { viewport } = useThree()
     const { width: viewportWidth } = viewport
     const portal = useRef()
@@ -85,10 +89,10 @@ function Frame({ id, name, author, bg, width = 1, height = 1.61803398875, childr
     useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, 0.2, dt))
     return (
         <group {...props}>
-            <Text {...headlineFontProps} fontSize={viewportWidth < 4.5 ? 0.25 : 0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-width / 2 + 0.1, 0.14, 0.01]} >
+            <Text {...HeadlineFontProps} color={color} fontSize={viewportWidth < 4.5 ? 0.25 : 0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-width / 2 + 0.1, 0.14, 0.01]} >
                 {name}
             </Text>
-            <Text {...headlineFontProps} anchorX="right" position={[width / 2 - 0.1, -height / 2 + 0.11, 0.01]} >
+            <Text {...HeadlineFontProps} color={color} anchorX="right" position={[width / 2 - 0.1, -height / 2 + 0.11, 0.01]} >
                 /{id}
             </Text>
             <mesh name={id} onClick={(e) => (e.stopPropagation(), setLocation('/item/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
