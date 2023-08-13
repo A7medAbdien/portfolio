@@ -2,8 +2,8 @@ import { Box, Cloud } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 
-const Clouds = ({ }) => {
-    const cloudCount = Array(5).fill(0)
+const Clouds = ({ count }) => {
+    const cloudCount = Array(count).fill(0)
     const { viewport } = useThree()
     const { width, height } = viewport
     const { cloudPos } = useControls({
@@ -36,15 +36,15 @@ const Clouds = ({ }) => {
                 < Cloud
                     {...cloudProps}
                     position={[
-                        Math.random() * width / 2 - width / 4,
-                        -i * height,
+                        (Math.random() * width / 2) - width / 4,
+                        (-i + 0.5) * height,
                         cloudPos.y - Math.random() * width / 2 - width / 4
                     ]}
                 />
                 < Cloud
                     {...cloudProps}
                     position={[
-                        -(Math.random() * width - width / 2),
+                        (Math.random() * width) - width / 2,
                         -(i + 0.5) * height,
                         cloudPos.y - Math.random()
                     ]}

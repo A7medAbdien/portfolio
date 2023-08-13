@@ -11,6 +11,8 @@ import ScrollArrow from './ScrollArrow/ScrollArrow'
 import Divider from './Divider'
 import calcMaxWidth from '../Utils/calcMaxWidth'
 import headlineFontProps from '../Utils/headlineFontProps'
+import Clouds from './Clouds'
+import InnerClouds from './InnerClouds'
 
 extend(geometry)
 
@@ -38,6 +40,7 @@ export default function ProjectsPage({ pageOffset }) {
             step: 0.01,
         },
     })
+    console.log("ji");
 
 
     return <>
@@ -47,19 +50,23 @@ export default function ProjectsPage({ pageOffset }) {
             <group position={[0, titlePos, 0]} >
                 <Text
                     {...headlineFontProps}>
-                    {"{ MY WORK }"}
+                    {"{ MY  WORK }"}
                 </Text >
             </group>
 
-            <Frame id="01" width={calcMaxWidth(width)} height={height / 6} name="ArtMixer" bg="#e4cdac" >
-                <Box position={[0, 0, -5]} />
+
+            <Frame id="01" width={calcMaxWidth(width)} height={height / 6} name="ArtMixer" bg="#fff" >
+
+                <InnerClouds count={1} />
+                <ambientLight color="black" intensity={0.8} />
             </Frame>
-            <Frame id="02" width={calcMaxWidth(width)} height={height / 6} name="SafeDistance" bg="#d1d1ca" position={[0, -height / 3, 0]}>
+
+            {/* <Frame id="02" width={calcMaxWidth(width)} height={height / 6} name="SafeDistance" bg="#d1d1ca" position={[0, -height / 3, 0]}>
                 <Sphere position={[0, 0, -5]} />
             </Frame>
             <Frame id="03" width={calcMaxWidth(width)} height={height / 6} name="ToxicTweets" bg="#c8daf7" position={[0, -4 * height / 6, 0]}>
                 <Torus position={[0, 0, -5]} />
-            </Frame>
+            </Frame> */}
 
             <Rig />
         </group>

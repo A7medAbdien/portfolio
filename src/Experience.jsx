@@ -9,8 +9,8 @@ import { easing } from 'maath'
 import IntroPage from './components/IntroPage'
 import Divider from './components/Divider'
 import ProfilePage from './components/ProfilePage'
-import Smoke from './components/Smoke'
-import Clouds from './components/ScrollArrow/Clouds'
+import CursorSmoke from './components/CursorSmoke'
+import Clouds from './components/Clouds'
 import ProjectsPage from './components/ProjectsPage'
 
 
@@ -39,13 +39,15 @@ export default function Experience() {
                 <group scale={pagesScale} position={[0, pagesPos.y, pagesPos.z]}>
                     <Pages pagesNum={pagesNum} />
                 </group>
-                {/* <Clouds count={pagesNum} /> */}
+                <Clouds count={pagesNum} />
             </Scroll>
         </ScrollControls >
 
         {/* <Smoke /> */}
 
-        <directionalLight color="#fff" intensity={0.3} position={[-1, 0, 1]} />
+        <ambientLight color="#fff" intensity={2} />
+
+        {/* <directionalLight color="#fff" intensity={1} position={[-1, 0, 1]} /> */}
 
         <axesHelper args={[5]} />
     </>
@@ -69,17 +71,18 @@ const Pages = ({ pagesNum }) => {
         {/* 
             PAGE 0: intro
         */}
-        <IntroPage showScroll={showScroll} />
+        {/* <IntroPage showScroll={showScroll} /> */}
 
         {/*
             PAGE 1: Profile & Skills
         */}
-        <ProfilePage pageOffset={- (height / 2)} />
+        {/* <ProfilePage pageOffset={- (height / 2)} /> */}
 
         {/* 
             PAGE 2: Projects 
         */}
-        <ProjectsPage pageOffset={- 2 * height} />
+        <ProjectsPage pageOffset={0} />
+        {/* <ProjectsPage pageOffset={- 2 * height} /> */}
 
         {/*
             PAGE 3: CV

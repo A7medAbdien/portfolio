@@ -4,19 +4,19 @@ import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { easing } from 'maath'
 
-const Smokey = forwardRef((props, ref) => {
+const Smokey = forwardRef(({ color = '#00bbbb', ...props }, ref) => {
 
     const url = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png'
     const smokeTexture = useLoader(THREE.TextureLoader, url)
     return <>
         <mesh rot ref={ref} {...props}>
             <planeGeometry args={[2.5, 2.5]} />
-            <meshLambertMaterial color={'#00bbbb'} map={smokeTexture} transparent />
+            <meshLambertMaterial color={color} map={smokeTexture} transparent />
         </mesh>
     </>
 })
 
-const Smoke = ({ count = 10, ratio = 1 }) => {
+const CursorSmoke = ({ count = 10, ratio = 1 }) => {
     const { smokePose } = useControls({
         smokePose: {
             value: 2.5,
@@ -67,4 +67,4 @@ const Smoke = ({ count = 10, ratio = 1 }) => {
     </>
 }
 
-export default Smoke
+export default CursorSmoke
