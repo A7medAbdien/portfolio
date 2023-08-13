@@ -10,9 +10,10 @@ import { easing, geometry } from 'maath'
 import ScrollArrow from './ScrollArrow/ScrollArrow'
 import Divider from './Divider'
 import calcMaxWidth from '../Utils/calcMaxWidth'
-import { HeadlineFontProps } from '../Utils/fontProps'
+import { ContentFontProps, HeadlineFontProps } from '../Utils/fontProps'
 import Clouds from './Clouds'
 import InnerClouds from './InnerClouds'
+import { Frame, Rig } from './PortalComponents'
 
 extend(geometry)
 
@@ -20,19 +21,21 @@ export default function ProjectsPage({ pageOffset }) {
 
     const { viewport } = useThree()
     const { width, height } = viewport
-    const { projectsPageDividerPos, jopTitlePos, scrollPos, titlePos } = useControls({
+    const { innerTitlePos, innerImagePos, innerContentPos, titlePos } = useControls("My Work Page", {
         titlePos: {
             value: 1.2,
             step: 0.01,
         },
-        jopTitlePos: {
-            value: { x: 0, y: pageOffset - height / 2 - 1.25 },
-            joystick: 'invertY',
+        innerTitlePos: {
+            value: 1,
             step: 0.01,
         },
-        scrollPos: {
-            value: { x: 0, y: pageOffset - (height / 2) + 0.2 },
-            joystick: 'invertY',
+        innerImagePos: {
+            value: -0.25,
+            step: 0.01,
+        },
+        innerContentPos: {
+            value: -.5,
             step: 0.01,
         },
         projectsPageDividerPos: {
@@ -56,10 +59,8 @@ export default function ProjectsPage({ pageOffset }) {
             <Frame id="01" width={calcMaxWidth(width)} height={height / 6} name="ArtMixer"  >
                 <InnerClouds count={1} />
                 <ambientLight color="red" intensity={0.8} />
-                <mesh>
-                    <meshBasicMaterial />
-                    <roundedPlaneGeometry args={[1, 1]} />
-                </mesh>
+                <InnerCard />
+
             </Frame>
 
             <Frame id="02" width={calcMaxWidth(width)} height={height / 6} name="SafeDistance" position={[0, -height / 3, 0]}>
@@ -77,45 +78,56 @@ export default function ProjectsPage({ pageOffset }) {
     </>
 }
 
-
-function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.61803398875, children, color = 'black', ...props }) {
-    const { viewport } = useThree()
-    const { width: viewportWidth } = viewport
-    const portal = useRef()
-    const [, setLocation] = useLocation()
-    const [, params] = useRoute('/item/:id')
-    const [hovered, hover] = useState(false)
-    useCursor(hovered)
-    useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, 0.2, dt))
-    return (
-        <group {...props}>
-            <Text {...HeadlineFontProps} color={color} fontSize={viewportWidth < 4.5 ? 0.25 : 0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-width / 2 + 0.1, 0.14, 0.01]} >
-                {name}
-            </Text>
-            <Text {...HeadlineFontProps} color={color} anchorX="right" position={[width / 2 - 0.1, -height / 2 + 0.11, 0.01]} >
-                /{id}
-            </Text>
-            <mesh name={id} onClick={(e) => (e.stopPropagation(), setLocation('/item/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
-                <roundedPlaneGeometry args={[width, height]} />
-                <MeshPortalMaterial ref={portal} events={params?.id === id} side={THREE.DoubleSide}>
-                    <color attach="background" args={[bg]} />
-                    {children}
-                </MeshPortalMaterial>
-            </mesh>
-        </group>
-    )
-}
-
-function Rig({ position = new THREE.Vector3(0, 0, 6), focus = new THREE.Vector3(0, 0, 0) }) {
-    const { controls, scene } = useThree()
-    const [, params] = useRoute('/item/:id')
-    useEffect(() => {
-        const active = scene.getObjectByName(params?.id)
-        if (active) {
-            active.parent.localToWorld(position.set(0, 0.5, 0.25))
-            active.parent.localToWorld(focus.set(0, 0, -2))
-        }
-        controls?.setLookAt(...position.toArray(), ...focus.toArray(), true)
+const InnerCard = () => {
+    const { innerTitlePos, innerImagePos, innerContentPos, titlePos } = useControls("My Work Page", {
+        titlePos: {
+            value: 1.2,
+            step: 0.01,
+        },
+        innerTitlePos: {
+            value: 1,
+            step: 0.01,
+        },
+        innerImagePos: {
+            value: -0.25,
+            step: 0.01,
+        },
+        innerContentPos: {
+            value: -1.5,
+            step: 0.01,
+        },
+        projectsPageDividerPos: {
+            value: 0.5,
+            step: 0.01,
+        },
     })
-    // return <CameraControls makeDefault minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
+
+    const { viewport } = useThree()
+    const { width, } = viewport
+
+    return <group position={[0, 0, 0]} >
+        <Text
+            {...HeadlineFontProps}
+            position={[0, innerTitlePos, 0]}
+            color={'#000'}
+        >
+            {"{ PROFILE }"}
+        </Text >
+
+        <mesh position={[0, innerImagePos, 0]}>
+            <meshBasicMaterial />
+            <roundedPlaneGeometry args={[1, 1]} />
+        </mesh>
+
+        <Text
+            {...ContentFontProps(width)}
+            textAlign='justify'
+            position={[0, innerContentPos, 0]}
+            color={'#000'}
+        >
+            Hi, I'm Ahmed Abdin, a Software Developer based in Bahrain.
+            I'm always inspired by the great websites, apps and analysis from all over the world.
+            My current goal is to win an award for my work.
+        </Text >
+    </group>
 }
