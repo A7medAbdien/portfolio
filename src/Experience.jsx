@@ -1,25 +1,24 @@
 import * as THREE from 'three'
 import { useRef, useState, createRef, forwardRef, useEffect } from 'react'
-import { Box, Cloud, Html, Line, OrbitControls, Scroll, ScrollControls, Text, useScroll } from '@react-three/drei'
+import { Box, Cloud, Html, Image, Line, OrbitControls, Scroll, ScrollControls, Svg, Text, useScroll } from '@react-three/drei'
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
-import { easing } from 'maath'
 import { useRoute, useLocation } from 'wouter'
 
 
 import IntroPage from './components/Pages/IntroPage'
-import Divider from './components/Divider'
 import ProfilePage from './components/Pages/ProfilePage'
 import CursorSmoke from './components/CursorSmoke'
 import Clouds from './components/Clouds'
 import ProjectsPage from './components/Pages/ProjectsPage/ProjectsPage'
 import { disableScroll, enableScroll } from './Utils/controlScroll'
+import ContactPage from './components/Pages/ContactPage'
 
 
 export default function Experience() {
 
-    const pagesNum = 5
+    const pagesNum = 4
 
     const { pagesScale, pagesPos } = useControls({
         pagesPos: {
@@ -77,11 +76,9 @@ export default function Experience() {
 
         <CursorSmoke />
 
-        {/* <ambientLight color="#fff" intensity={2} /> */}
+        <directionalLight color="#fff" intensity={0.8} position={[0, 0, 3]} />
 
-        <directionalLight color="#fff" intensity={0.8} position={[-1, 0, 1]} />
-
-        <axesHelper args={[5]} />
+        {/* <axesHelper args={[5]} /> */}
     </>
 }
 
@@ -108,7 +105,7 @@ const Pages = ({ pagesNum }) => {
         {/*
             PAGE 1: Profile & Skills
         */}
-        <ProfilePage pageOffset={- (height / 2)} />
+        <ProfilePage pageOffset={- height / 2} />
 
         {/* 
             PAGE 2: Projects 
@@ -119,7 +116,7 @@ const Pages = ({ pagesNum }) => {
         {/*
             PAGE 3: CV
         */}
-
+        <ContactPage pageOffset={- 3 * height} />
     </>
 }
 

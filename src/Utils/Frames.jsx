@@ -6,11 +6,11 @@ import { useRef, useState } from 'react';
 import { easing } from 'maath';
 import { useRoute } from 'wouter';
 
-export const HoverableFrame = ({ children, position, rotation, shrinkX = 0.9, shrinkY = 0.9, colorNotScale = false }) => {
+export const HoverableFrame = ({ alwaysActive = false, children, position, rotation, shrinkX = 0.9, shrinkY = 0.9, colorNotScale = false }) => {
     const meshRef = useRef()
     const [hovered, setHovered] = useState(false)
     const [, params] = useRoute('/:id')
-    const isActive = params?.id != null
+    const isActive = alwaysActive ? true : params?.id != null
 
     useCursor(hovered)
     useFrame((state, dt) => {
@@ -30,6 +30,13 @@ export const HoverableFrame = ({ children, position, rotation, shrinkX = 0.9, sh
             {children}
         </mesh>
     )
+}
+
+export const LogoFrame = ({ url, color = '#fff', ...props }) => {
+    const logoTexture = useLoader(THREE.TextureLoader, url)
+    return <>
+        <meshLambertMaterial color={color} map={logoTexture} transparent />
+    </>
 }
 
 export const ImageFrame = ({ url, ...props }) => {

@@ -63,9 +63,10 @@ export default function ProjectsPage({ pageOffset }) {
 
             <group name='RigContainer'>
 
-                <Text
-                    {...HeadlineFontProps}>
+                <Text {...HeadlineFontProps}
                     position={[0, titlePos, 0]}
+                >
+
                     {"{ MY  WORK }"}
                 </Text >
 
