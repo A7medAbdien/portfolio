@@ -17,6 +17,7 @@ const portalContents = [
         name: 'ArtMixer',
         description: 'A 3D website, that mixes two images using Neural Style Transfer (NST) technique.',
         img: '/imgs/artMixerImg.png',
+        link: 'https://github.com/A7medAbdien/ArtMixer',
         bg: 'red'
     },
     {
@@ -24,6 +25,7 @@ const portalContents = [
         name: 'SafeDistance',
         description: 'During COVID-19, Measure the safe distance (2 meters) using the camera phone.',
         vid: '/vids/safeDistanceVid.mp4',
+        link: 'https://github.com/A7medAbdien/safeDistanceProject',
         bg: 'green'
     },
     {
@@ -31,6 +33,7 @@ const portalContents = [
         name: 'ToxicTweets',
         description: 'Machine learning model that classify positive and negative (toxic) Twitter tweets.',
         img: '/imgs/toxicTweetsImg.png',
+        link: 'https://colab.research.google.com/drive/1L472f5lxBHfFAmlTO7JCpvag9YFuxiwb?usp=sharing',
         bg: 'blue'
     },
 ]
@@ -70,11 +73,11 @@ export default function ProjectsPage({ pageOffset }) {
                 </group>
 
 
-                {portalContents.map(({ id, name, description, img, vid, bg }, i) =>
+                {portalContents.map(({ id, name, description, img, vid, link, bg }, i) =>
                     <Portal key={id} {...frameProps} id={id} name={name} position={[0, -i * (height / 3), 0]} >
                         <InnerClouds count={1} />
                         <ambientLight color={bg} intensity={0.8} />
-                        <InnerCard id={id} title={name} img={img} vid={vid} description={description} />
+                        <InnerCard id={id} title={name} img={img} vid={vid} link={link} description={description} hoveredColor={bg} />
                     </Portal>
                 )}
             </group>

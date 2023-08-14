@@ -1,4 +1,4 @@
-import { OrbitControls, Text } from '@react-three/drei'
+import { OrbitControls, Text, useCursor } from '@react-three/drei'
 import { extend, useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { easing, geometry } from 'maath'
@@ -7,14 +7,14 @@ import { useRoute, useLocation } from 'wouter'
 
 import { ContentFontProps, HeadlineFontProps } from '../../Utils/fontProps'
 import { enableScroll } from '../../Utils/controlScroll'
-import { useRef } from 'react'
-import { ImageFrame, VideoFrame } from '../../Utils/Frames'
+import { useRef, useState } from 'react'
+import { HoverableFrame, ImageFrame, VideoFrame } from '../../Utils/Frames'
 import calcMaxWidth from '../../Utils/calcMaxWidth'
 
 extend(geometry)
 
 
-const InnerCard = ({ id, title, img, vid, description, ...props }) => {
+const InnerCard = ({ id, title, img, vid, link, description, hoveredColor, ...props }) => {
     const { innerTitlePos, innerImagePos, innerContentPos, backButtonPos } = useControls("My Work Inner", {
         backButtonPos: {
             value: 1.1,
@@ -49,6 +49,8 @@ const InnerCard = ({ id, title, img, vid, description, ...props }) => {
 
     useFrame((_, delta) => {
         if (isActive) {
+            // easing.damp3(backButton.current.scale, [hovered ? 1.25 : 1, hovered ? 1.25 : 1, 1], smoothTime, delta)
+            // easing.dampC(backButton.current.material.color, hovered ? hoveredColor : '#000')
             easing.damp3(backButton.current.position, [0, backButtonPos, 0], smoothTime, delta)
             easing.damp3(innerTitle.current.position, [0, innerTitlePos, 0], smoothTime, delta)
             easing.damp3(innerImage.current.position, [0, innerImagePos, 0], smoothTime, delta)
@@ -56,7 +58,14 @@ const InnerCard = ({ id, title, img, vid, description, ...props }) => {
         }
     })
 
+    const openLink = () => {
+        window.open(link, '_blank');
+    };
+
     const headlineFontProps = { ...HeadlineFontProps, color: '#000' }
+
+    const [hovered, setHovered] = useState(false)
+    useCursor(hovered)
 
     return <>
         {isActive && <group  {...props} position={[0, 0.4, 0]} >
@@ -65,6 +74,8 @@ const InnerCard = ({ id, title, img, vid, description, ...props }) => {
                 {...headlineFontProps}
                 position={[0, backButtonPos + 5, 0]}
                 fontSize={0.1}
+                onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+                onPointerOut={() => setHovered(false)}
                 onClick={() => (setLocation('/'), enableScroll())}
             >
                 {"BACK"}
@@ -82,10 +93,12 @@ const InnerCard = ({ id, title, img, vid, description, ...props }) => {
                 <mesh
                     ref={innerImage}
                     position={[0, innerImagePos, -20]}
-                    onClick={() => console.log("hi")}
+                    onClick={() => openLink()}
                 >
-                    <ImageFrame url={img} transparent opacity={0.8} />
-                    <roundedPlaneGeometry args={[calcMaxWidth(width) - 0.2, (height / 2.5) - 0.2]} />
+                    <HoverableFrame >
+                        <ImageFrame url={img} transparent opacity={0.8} />
+                        <roundedPlaneGeometry args={[calcMaxWidth(width) - 0.2, (height / 2.5) - 0.2]} />
+                    </HoverableFrame>
                 </mesh>
             }
 
@@ -93,10 +106,12 @@ const InnerCard = ({ id, title, img, vid, description, ...props }) => {
                 <mesh
                     ref={innerImage}
                     position={[0, innerImagePos, -20]}
-                    onClick={() => console.log("hi")}
+                    onClick={() => openLink()}
                 >
-                    <VideoFrame url={vid} />
-                    <roundedPlaneGeometry args={[calcMaxWidth(width / 2) - 0.2, (height / 2.5)]} />
+                    <HoverableFrame >
+                        <VideoFrame url={vid} />
+                        <roundedPlaneGeometry args={[calcMaxWidth(width / 2) - 0.2, (height / 2.5)]} />
+                    </HoverableFrame>
                 </mesh>
             }
 

@@ -103,18 +103,18 @@ const Pages = ({ pagesNum }) => {
         {/* 
             PAGE 0: intro
         */}
-        {/* <IntroPage showScroll={showScroll} /> */}
+        <IntroPage showScroll={showScroll} />
 
         {/*
             PAGE 1: Profile & Skills
         */}
-        {/* <ProfilePage pageOffset={- (height / 2)} /> */}
+        <ProfilePage pageOffset={- (height / 2)} />
 
         {/* 
             PAGE 2: Projects 
         */}
-        <ProjectsPage pageOffset={0} />
-        {/* <ProjectsPage pageOffset={- 2 * height} /> */}
+        {/* <ProjectsPage pageOffset={0} /> */}
+        <ProjectsPage pageOffset={- 2 * height} />
 
         {/*
             PAGE 3: CV

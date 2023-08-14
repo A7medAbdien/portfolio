@@ -14,13 +14,14 @@ export const HoverableFrame = ({ children, position, rotation, shrinkX = 0.9, sh
 
     useCursor(hovered)
     useFrame((state, dt) => {
-        !colorNotScale && easing.damp3(meshRef.current.scale, [1 * (!isActive && hovered ? shrinkX : 1), 1 * (!isActive && hovered ? shrinkY : 1), 1], 0.1, dt)
-        colorNotScale && easing.dampC(meshRef.current.children[0].material.color, hovered ? '#4f75ca' : '#3f3e3c')
+        !colorNotScale && easing.damp3(meshRef.current.scale, [(isActive && hovered ? shrinkX : 1), (isActive && hovered ? shrinkY : 1), 1], 0.1, dt)
+        colorNotScale && easing.dampC(meshRef.current.children[0].material.color, hovered ? '#4f75ca' : '#000')
     })
 
     return (
         <mesh
             ref={meshRef}
+            scale={[1, 0.5]}
             onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
             onPointerOut={() => setHovered(false)}
             position={position}
