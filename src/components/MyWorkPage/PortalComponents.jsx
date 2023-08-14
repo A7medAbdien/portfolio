@@ -16,7 +16,7 @@ export function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.618
     const { width: viewportWidth } = viewport
     const portal = useRef()
     const [, setLocation] = useLocation()
-    const [, params] = useRoute('/item/:id')
+    const [, params] = useRoute('/:id')
     const [hovered, hover] = useState(false)
     useCursor(hovered)
     useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, 0.2, dt))
@@ -28,7 +28,7 @@ export function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.618
             <Text {...HeadlineFontProps} color={color} anchorX="right" position={[width / 2 - 0.1, -height / 2 + 0.11, 0.01]} >
                 /{id}
             </Text>
-            <mesh name={id} onClick={(e) => (e.stopPropagation(), setLocation('/item/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
+            <mesh name={id} onClick={(e) => (e.stopPropagation(), setLocation('/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
                 <roundedPlaneGeometry args={[width, height]} />
                 <MeshPortalMaterial ref={portal} events={params?.id === id} side={THREE.DoubleSide}>
                     <color attach="background" args={[bg]} />
@@ -41,7 +41,7 @@ export function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.618
 
 export function Rig({ position = new THREE.Vector3(0, 0, 6), focus = new THREE.Vector3(0, 0, 0) }) {
     const { controls, scene } = useThree()
-    const [, params] = useRoute('/item/:id')
+    const [, params] = useRoute('/:id')
     useEffect(() => {
         const active = scene.getObjectByName(params?.id)
         if (active) {

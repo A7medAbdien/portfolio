@@ -38,7 +38,7 @@ const InnerCard = () => {
     const { viewport } = useThree()
     const { width } = viewport
 
-    const [, params] = useRoute('/item/:id')
+    const [, params] = useRoute('/:id')
     const isActive = params?.id
     const [, setLocation] = useLocation()
 

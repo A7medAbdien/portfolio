@@ -32,7 +32,7 @@ export default function Experience() {
         },
     })
 
-    const [, params] = useRoute('/item/:id')
+    const [, params] = useRoute('/:id')
     const [, setLocation] = useLocation()
 
 
