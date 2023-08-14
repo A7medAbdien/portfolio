@@ -9,7 +9,7 @@ const Smokey = forwardRef(({ color = '#00bbbb', ...props }, ref) => {
     const url = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png'
     const smokeTexture = useLoader(THREE.TextureLoader, url)
     return <>
-        <mesh rot ref={ref} {...props}>
+        <mesh ref={ref} {...props}>
             <planeGeometry args={[2.5, 2.5]} />
             <meshLambertMaterial color={color} map={smokeTexture} transparent />
         </mesh>
@@ -27,7 +27,6 @@ const CursorSmoke = ({ count = 10, ratio = 1 }) => {
     const { viewport } = useThree()
     const { width, height } = viewport
     const scale = width > 7.2 ? (width / height) * 0.25 : (width / height) * 0.5
-    console.log(width, height);
 
     const refs = useRef(
         Array.from({ length: count }).map(() => createRef())
