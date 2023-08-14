@@ -4,11 +4,11 @@ import { useControls } from 'leva'
 import { useRoute, useLocation } from 'wouter'
 
 
-import calcMaxWidth from '../../Utils/calcMaxWidth'
-import { ContentFontProps, HeadlineFontProps } from '../../Utils/fontProps'
+import calcMaxWidth from '../../../Utils/calcMaxWidth'
+import { ContentFontProps, HeadlineFontProps } from '../../../Utils/fontProps'
 import InnerClouds from './InnerClouds'
 import { Portal, Rig } from './PortalComponents'
-import { enableScroll } from '../../Utils/controlScroll'
+import { enableScroll } from '../../../Utils/controlScroll'
 import InnerCard from './InnerCard'
 
 const portalContents = [

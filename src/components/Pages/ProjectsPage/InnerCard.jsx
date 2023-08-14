@@ -5,11 +5,11 @@ import { easing, geometry } from 'maath'
 import { useRoute, useLocation } from 'wouter'
 
 
-import { ContentFontProps, HeadlineFontProps } from '../../Utils/fontProps'
-import { enableScroll } from '../../Utils/controlScroll'
+import { ContentFontProps, HeadlineFontProps } from '../../../Utils/fontProps'
+import { enableScroll } from '../../../Utils/controlScroll'
 import { useRef, useState } from 'react'
-import { HoverableFrame, ImageFrame, VideoFrame } from '../../Utils/Frames'
-import calcMaxWidth from '../../Utils/calcMaxWidth'
+import { HoverableFrame, ImageFrame, VideoFrame } from '../../../Utils/Frames'
+import calcMaxWidth from '../../../Utils/calcMaxWidth'
 
 extend(geometry)
 

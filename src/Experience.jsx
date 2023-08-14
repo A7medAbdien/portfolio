@@ -8,12 +8,12 @@ import { easing } from 'maath'
 import { useRoute, useLocation } from 'wouter'
 
 
-import IntroPage from './components/IntroPage'
+import IntroPage from './components/Pages/IntroPage'
 import Divider from './components/Divider'
-import ProfilePage from './components/ProfilePage'
+import ProfilePage from './components/Pages/ProfilePage'
 import CursorSmoke from './components/CursorSmoke'
 import Clouds from './components/Clouds'
-import ProjectsPage from './components/ProjectsPage/ProjectsPage'
+import ProjectsPage from './components/Pages/ProjectsPage/ProjectsPage'
 import { disableScroll, enableScroll } from './Utils/controlScroll'
 
 

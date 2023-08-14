@@ -1,9 +1,9 @@
 import { Text } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
-import Divider from './Divider'
-import calcMaxWidth from '../Utils/calcMaxWidth'
-import { HeadlineFontProps, ContentFontProps } from '../Utils/fontProps'
+import Divider from '../Divider'
+import calcMaxWidth from '../../Utils/calcMaxWidth'
+import { HeadlineFontProps, ContentFontProps } from '../../Utils/fontProps'
 
 export default function ProfilePage({ pageOffset }) {
 

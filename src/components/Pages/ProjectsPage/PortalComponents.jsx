@@ -7,7 +7,7 @@ import { Perf } from 'r3f-perf'
 import { useRoute, useLocation } from 'wouter'
 import { easing, geometry } from 'maath'
 
-import { HeadlineFontProps } from '../../Utils/fontProps'
+import { HeadlineFontProps } from '../../../Utils/fontProps'
 
 extend(geometry)
 

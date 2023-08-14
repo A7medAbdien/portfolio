@@ -3,8 +3,8 @@ import { Html, Line, OrbitControls, Scroll, ScrollControls, Text, useScroll } fr
 import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
-import ScrollArrow from './ScrollArrow/ScrollArrow'
-import Divider from './Divider'
+import ScrollArrow from '../ScrollArrow/ScrollArrow'
+import Divider from '../Divider'
 
 
 export default function IntroPage({ showScroll }) {
