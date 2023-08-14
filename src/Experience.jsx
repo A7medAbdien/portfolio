@@ -1,11 +1,8 @@
-import * as THREE from 'three'
-import { useRef, useState, createRef, forwardRef, useEffect } from 'react'
-import { Box, Cloud, Html, Image, Line, OrbitControls, Scroll, ScrollControls, Svg, Text, useScroll } from '@react-three/drei'
-import { useFrame, useLoader, useThree } from '@react-three/fiber'
+import { useState, useEffect } from 'react'
+import { OrbitControls, Scroll, ScrollControls, useScroll } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
-import { Perf } from 'r3f-perf'
 import { useRoute, useLocation } from 'wouter'
-
 
 import IntroPage from './components/Pages/IntroPage'
 import ProfilePage from './components/Pages/ProfilePage'
@@ -61,8 +58,6 @@ export default function Experience() {
 
     return <>
 
-        <Perf position="top-left" />
-
         {/* <OrbitControls makeDefault /> */}
 
         <ScrollControls enabled={!isParams()} damping={0.35} pages={pagesNum} >
@@ -87,7 +82,7 @@ const Pages = ({ pagesNum }) => {
     const data = useScroll()
 
     const { viewport } = useThree()
-    const { width, height } = viewport
+    const { height } = viewport
 
     const [showScroll, setShowScroll] = useState(true)
     useFrame(() => {
