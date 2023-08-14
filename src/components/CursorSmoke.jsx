@@ -26,7 +26,8 @@ const CursorSmoke = ({ count = 10, ratio = 1 }) => {
 
     const { viewport } = useThree()
     const { width, height } = viewport
-    const scale = (width / height) * 0.5
+    const scale = width > 7.2 ? (width / height) * 0.25 : (width / height) * 0.5
+    console.log(width, height);
 
     const refs = useRef(
         Array.from({ length: count }).map(() => createRef())
