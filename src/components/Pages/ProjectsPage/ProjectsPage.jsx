@@ -62,12 +62,12 @@ export default function ProjectsPage({ pageOffset }) {
             {/* <Box position={[0, 0, 0]} /> */}
 
             <group name='RigContainer'>
-                <group position={[0, titlePos, 0]} >
-                    <Text
-                        {...HeadlineFontProps}>
-                        {"{ MY  WORK }"}
-                    </Text >
-                </group>
+
+                <Text
+                    {...HeadlineFontProps}>
+                    position={[0, titlePos, 0]}
+                    {"{ MY  WORK }"}
+                </Text >
 
                 {portalContents.map(({ id, name, description, img, vid, link, bg }, i) =>
                     <Portal key={id} {...frameProps} id={id} name={name} position={[0, -i * (height / 3), 0]} >
