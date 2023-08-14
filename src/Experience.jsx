@@ -66,7 +66,7 @@ export default function Experience() {
 
         {/* <OrbitControls makeDefault /> */}
 
-        <ScrollControls enabled={!isParams()} damping={1} pages={pagesNum} >
+        <ScrollControls enabled={!isParams()} damping={0.35} pages={pagesNum} >
             <Scroll>
                 <group scale={pagesScale} position={[0, pagesPos.y, pagesPos.z]}>
                     <Pages pagesNum={pagesNum} />
