@@ -15,7 +15,7 @@ const InnerClouds = ({ count }) => {
 
     const cloudProps = {
         speed: 0.25,
-        opacity: "0.9",
+        opacity: "0.75",
         depth: "1",
         width: "1",
         segments: "4"

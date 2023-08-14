@@ -11,6 +11,8 @@ import { HeadlineFontProps } from '../../Utils/fontProps'
 
 extend(geometry)
 
+const smoothTime = 0.4
+
 export function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.61803398875, children, color = 'black', ...props }) {
     const { viewport } = useThree()
     const { width: viewportWidth } = viewport
@@ -19,7 +21,7 @@ export function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.618
     const [, params] = useRoute('/:id')
     const [hovered, hover] = useState(false)
     useCursor(hovered)
-    useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, 0.2, dt))
+    useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, smoothTime, dt))
     return (
         <group {...props}>
             <Text {...HeadlineFontProps} color={color} fontSize={viewportWidth < 4.5 ? 0.25 : 0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-width / 2 + 0.1, 0.14, 0.01]} >
@@ -40,14 +42,18 @@ export function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.618
 }
 
 export function Rig({ position = new THREE.Vector3(0, 0, 6), focus = new THREE.Vector3(0, 0, 0) }) {
-    const { controls, scene } = useThree()
+    const { scene } = useThree()
     const [, params] = useRoute('/:id')
+
+    useFrame((state, delta) => {
+        easing.damp3(state.camera.position, position, smoothTime, delta)
+    })
+
     useEffect(() => {
         const active = scene.getObjectByName(params?.id)
         if (active) {
-            active.parent.localToWorld(position.set(0, 0.5, 0.25))
-            active.parent.localToWorld(focus.set(0, 0, -2))
+            active.parent.localToWorld(position.set(0, 0, 4))
+            active.parent.localToWorld(focus.set(0, 0, 0))
         }
-        controls?.setLookAt(...position.toArray(), ...focus.toArray(), true)
     })
 }

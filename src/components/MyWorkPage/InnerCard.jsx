@@ -1,4 +1,4 @@
-import { Text } from '@react-three/drei'
+import { OrbitControls, Text } from '@react-three/drei'
 import { extend, useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { easing, geometry } from 'maath'
@@ -60,7 +60,7 @@ const InnerCard = ({ id, ...props }) => {
 
 
     return <>
-        {isActive && <group position={[0, 0, 0]} >
+        {isActive && <group  {...props} position={[0, 0.3, 0]} >
             <Text
                 ref={backButton}
                 {...HeadlineFontProps}

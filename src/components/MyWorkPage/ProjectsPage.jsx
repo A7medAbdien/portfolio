@@ -14,7 +14,7 @@ import InnerCard from './InnerCard'
 
 export default function ProjectsPage({ pageOffset }) {
 
-    const { viewport } = useThree()
+    const { viewport, camera } = useThree()
     const { width, height } = viewport
     const { titlePos } = useControls("My Work Page", {
         titlePos: {
@@ -27,6 +27,8 @@ export default function ProjectsPage({ pageOffset }) {
         },
     })
 
+    const [, params] = useRoute('/:id')
+
     const frameProps = {
         width: calcMaxWidth(width),
         height: height / 6,
@@ -36,29 +38,31 @@ export default function ProjectsPage({ pageOffset }) {
         <group position={[0, pageOffset, 0]} >
             {/* <Box position={[0, 0, 0]} /> */}
 
-            <group position={[0, titlePos, 0]} >
-                <Text
-                    {...HeadlineFontProps}>
-                    {"{ MY  WORK }"}
-                </Text >
+            <group name='RigContainer'>
+                <group position={[0, titlePos, 0]} >
+                    <Text
+                        {...HeadlineFontProps}>
+                        {"{ MY  WORK }"}
+                    </Text >
+                </group>
+
+
+                <Frame  {...frameProps} id={"01"} name="ArtMixer"  >
+                    <InnerClouds count={1} />
+                    <ambientLight color="red" intensity={0.8} />
+                    <InnerCard id={'01'} />
+                </Frame>
+
+                <Frame  {...frameProps} id={"02"} name="SafeDistance" position={[0, -height / 3, 0]}>
+                    <InnerClouds count={1} />
+                    <ambientLight color="green" intensity={0.8} />
+                </Frame>
+
+                <Frame {...frameProps} id={"03"} name="ToxicTweets" position={[0, -2 * height / 3, 0]}>
+                    <InnerClouds count={1} />
+                    <ambientLight color="blue" intensity={0.8} />
+                </Frame>
             </group>
-
-
-            <Frame  {...frameProps} id={"01"} name="ArtMixer"  >
-                <InnerClouds count={1} />
-                <ambientLight color="red" intensity={0.8} />
-                <InnerCard id={'01'} />
-            </Frame>
-
-            <Frame  {...frameProps} id={"02"} name="SafeDistance" position={[0, -height / 3, 0]}>
-                <InnerClouds count={1} />
-                <ambientLight color="green" intensity={0.8} />
-            </Frame>
-
-            <Frame {...frameProps} id={"03"} name="ToxicTweets" position={[0, -2 * height / 3, 0]}>
-                <InnerClouds count={1} />
-                <ambientLight color="blue" intensity={0.8} />
-            </Frame>
 
             <Rig />
         </group>
