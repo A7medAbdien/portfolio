@@ -13,7 +13,7 @@ import Divider from './components/Divider'
 import ProfilePage from './components/ProfilePage'
 import CursorSmoke from './components/CursorSmoke'
 import Clouds from './components/Clouds'
-import ProjectsPage from './components/ProjectsPage'
+import ProjectsPage from './components/MyWorkPage/ProjectsPage'
 import { disableScroll, enableScroll } from './Utils/controlScroll'
 
 
