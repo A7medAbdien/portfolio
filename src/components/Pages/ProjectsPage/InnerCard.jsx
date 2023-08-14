@@ -10,6 +10,7 @@ import { enableScroll } from '../../../Utils/controlScroll'
 import { useRef, useState } from 'react'
 import { HoverableFrame, ImageFrame, VideoFrame } from '../../../Utils/Frames'
 import calcMaxWidth from '../../../Utils/calcMaxWidth'
+import openLink from '../../../Utils/openLink'
 
 extend(geometry)
 
@@ -58,10 +59,6 @@ const InnerCard = ({ id, title, img, vid, link, description, hoveredColor, ...pr
         }
     })
 
-    const openLink = () => {
-        window.open(link, '_blank');
-    };
-
     const headlineFontProps = { ...HeadlineFontProps, color: '#000' }
 
     const [hovered, setHovered] = useState(false)
@@ -93,7 +90,7 @@ const InnerCard = ({ id, title, img, vid, link, description, hoveredColor, ...pr
                 <mesh
                     ref={innerImage}
                     position={[0, innerImagePos, -20]}
-                    onClick={() => openLink()}
+                    onClick={() => openLink(link)}
                 >
                     <HoverableFrame >
                         <ImageFrame url={img} transparent opacity={0.8} />
@@ -106,7 +103,7 @@ const InnerCard = ({ id, title, img, vid, link, description, hoveredColor, ...pr
                 <mesh
                     ref={innerImage}
                     position={[0, innerImagePos, -20]}
-                    onClick={() => openLink()}
+                    onClick={() => openLink(link)}
                 >
                     <HoverableFrame >
                         <VideoFrame url={vid} />
