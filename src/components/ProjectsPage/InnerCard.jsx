@@ -8,11 +8,13 @@ import { useRoute, useLocation } from 'wouter'
 import { ContentFontProps, HeadlineFontProps } from '../../Utils/fontProps'
 import { enableScroll } from '../../Utils/controlScroll'
 import { useRef } from 'react'
+import { ImageFrame, VideoFrame } from '../../Utils/Frames'
+import calcMaxWidth from '../../Utils/calcMaxWidth'
 
 extend(geometry)
 
 
-const InnerCard = ({ id, title, image, content, ...props }) => {
+const InnerCard = ({ id, title, img, vid, description, ...props }) => {
     const { innerTitlePos, innerImagePos, innerContentPos, backButtonPos } = useControls("My Work Inner", {
         backButtonPos: {
             value: 1.1,
@@ -33,7 +35,7 @@ const InnerCard = ({ id, title, image, content, ...props }) => {
     })
 
     const { viewport } = useThree()
-    const { width } = viewport
+    const { width, height } = viewport
 
     const [, params] = useRoute('/:id')
     const isActive = params?.id === id
@@ -54,15 +56,15 @@ const InnerCard = ({ id, title, image, content, ...props }) => {
         }
     })
 
+    const headlineFontProps = { ...HeadlineFontProps, color: '#000' }
 
     return <>
         {isActive && <group  {...props} position={[0, 0.4, 0]} >
             <Text
                 ref={backButton}
-                {...HeadlineFontProps}
+                {...headlineFontProps}
                 position={[0, backButtonPos + 5, 0]}
-                fontSize={0.09}
-                color={'#000'}
+                fontSize={0.1}
                 onClick={() => (setLocation('/'), enableScroll())}
             >
                 {"BACK"}
@@ -70,20 +72,33 @@ const InnerCard = ({ id, title, image, content, ...props }) => {
 
             <Text
                 ref={innerTitle}
-                {...HeadlineFontProps}
+                {...headlineFontProps}
                 position={[0, innerTitlePos + 5, 0]}
-                color={'#000'}
             >
-                {"{ ArtMixer }"}
+                {`{ ${title} }`}
             </Text >
 
-            <mesh
-                ref={innerImage}
-                position={[0, innerImagePos, -20]}
-            >
-                <meshBasicMaterial />
-                <roundedPlaneGeometry args={[1, 1]} />
-            </mesh>
+            {img &&
+                <mesh
+                    ref={innerImage}
+                    position={[0, innerImagePos, -20]}
+                    onClick={() => console.log("hi")}
+                >
+                    <ImageFrame url={img} transparent opacity={0.8} />
+                    <roundedPlaneGeometry args={[calcMaxWidth(width) - 0.2, (height / 2.5) - 0.2]} />
+                </mesh>
+            }
+
+            {vid &&
+                <mesh
+                    ref={innerImage}
+                    position={[0, innerImagePos, -20]}
+                    onClick={() => console.log("hi")}
+                >
+                    <VideoFrame url={vid} />
+                    <roundedPlaneGeometry args={[calcMaxWidth(width / 2) - 0.2, (height / 2.5)]} />
+                </mesh>
+            }
 
             <Text
                 ref={innerContent}
@@ -92,7 +107,7 @@ const InnerCard = ({ id, title, image, content, ...props }) => {
                 position={[0, innerContentPos - 5, 0]}
                 color={'#000'}
             >
-                A 3D website, that mixes two images using Neural Style Transfer (NST) technique.
+                {description}
             </Text >
         </group>}
     </>

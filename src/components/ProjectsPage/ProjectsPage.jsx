@@ -11,6 +11,29 @@ import { Portal, Rig } from './PortalComponents'
 import { enableScroll } from '../../Utils/controlScroll'
 import InnerCard from './InnerCard'
 
+const portalContents = [
+    {
+        id: '01',
+        name: 'ArtMixer',
+        description: 'A 3D website, that mixes two images using Neural Style Transfer (NST) technique.',
+        img: '/imgs/artMixerImg.png',
+        bg: 'red'
+    },
+    {
+        id: '02',
+        name: 'SafeDistance',
+        description: 'During COVID-19, Measure the safe distance (2 meters) using the camera phone.',
+        vid: '/vids/safeDistanceVid.mp4',
+        bg: 'green'
+    },
+    {
+        id: '03',
+        name: 'ToxicTweets',
+        description: 'Machine learning model that classify positive and negative (toxic) Twitter tweets.',
+        img: '/imgs/toxicTweetsImg.png',
+        bg: 'blue'
+    },
+]
 
 export default function ProjectsPage({ pageOffset }) {
 
@@ -47,23 +70,13 @@ export default function ProjectsPage({ pageOffset }) {
                 </group>
 
 
-                <Portal  {...frameProps} id={"01"} name="ArtMixer"  >
-                    <InnerClouds count={1} />
-                    <ambientLight color="red" intensity={0.8} />
-                    <InnerCard id={'01'} />
-                </Portal>
-
-                <Portal  {...frameProps} id={"02"} name="SafeDistance" position={[0, -height / 3, 0]}>
-                    <InnerClouds count={1} />
-                    <ambientLight color="green" intensity={0.8} />
-                    <InnerCard id={'02'} />
-                </Portal>
-
-                <Portal {...frameProps} id={"03"} name="ToxicTweets" position={[0, -2 * height / 3, 0]}>
-                    <InnerClouds count={1} />
-                    <ambientLight color="blue" intensity={0.8} />
-                    <InnerCard id={'03'} />
-                </Portal>
+                {portalContents.map(({ id, name, description, img, vid, bg }, i) =>
+                    <Portal key={id} {...frameProps} id={id} name={name} position={[0, -i * (height / 3), 0]} >
+                        <InnerClouds count={1} />
+                        <ambientLight color={bg} intensity={0.8} />
+                        <InnerCard id={id} title={name} img={img} vid={vid} description={description} />
+                    </Portal>
+                )}
             </group>
 
             <Rig />
