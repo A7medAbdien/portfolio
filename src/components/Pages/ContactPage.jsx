@@ -10,18 +10,18 @@ import calcMaxWidth from '../../Utils/calcMaxWidth'
 const logos = [
     {
         position: [-1.2, 0, 0],
-        url: '/imgs/github.png',
+        imgUrl: '/imgs/github.png',
         link: "https://github.com/A7medAbdien"
     },
     {
         position: [0, 0, 0],
-        url: '/imgs/linkedin.png',
+        imgUrl: '/imgs/linkedin.png',
         link: "https://www.linkedin.com/in/ahmed-abdin-90a957187/"
     },
     {
         position: [1.2, 0, 0],
-        url: '/imgs/whatsapp.png',
-        link: "https://github.com/A7medAbdien"
+        imgUrl: '/imgs/whatsapp.png',
+        link: "https://wa.me/97334533638?text=Hi%20Ahmed..."
     },
 ]
 
@@ -41,11 +41,11 @@ const ContactPage = ({ pageOffset = 0 }) => {
 
 
             <group scale={calcMaxWidth(width) / 3 > 0.7 ? 0.7 : calcMaxWidth(width) / 3} position={[0, -height / 2 + 1, 0]}>
-                {logos.map(({ position, url, link }, i) =>
+                {logos.map(({ position, imgUrl, link }, i) =>
                     <HoverableFrame alwaysActive key={i} position={position}>
                         <planeGeometry args={[1, 1]} />
                         <LogoFrame
-                            url={url}
+                            url={imgUrl}
                             scale={0.7}
                             onClick={() => openLink(link)}
                         />
