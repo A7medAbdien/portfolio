@@ -27,6 +27,11 @@ export default function ProjectsPage({ pageOffset }) {
         },
     })
 
+    const frameProps = {
+        width: calcMaxWidth(width),
+        height: height / 6,
+    }
+
     return <>
         <group position={[0, pageOffset, 0]} >
             {/* <Box position={[0, 0, 0]} /> */}
@@ -39,19 +44,18 @@ export default function ProjectsPage({ pageOffset }) {
             </group>
 
 
-            <Frame id="01" width={calcMaxWidth(width)} height={height / 6} name="ArtMixer"  >
+            <Frame  {...frameProps} id={"01"} name="ArtMixer"  >
                 <InnerClouds count={1} />
                 <ambientLight color="red" intensity={0.8} />
-                <InnerCard />
-
+                <InnerCard id={'01'} />
             </Frame>
 
-            <Frame id="02" width={calcMaxWidth(width)} height={height / 6} name="SafeDistance" position={[0, -height / 3, 0]}>
+            <Frame  {...frameProps} id={"02"} name="SafeDistance" position={[0, -height / 3, 0]}>
                 <InnerClouds count={1} />
                 <ambientLight color="green" intensity={0.8} />
             </Frame>
 
-            <Frame id="03" width={calcMaxWidth(width)} height={height / 6} name="ToxicTweets" position={[0, -4 * height / 6, 0]}>
+            <Frame {...frameProps} id={"03"} name="ToxicTweets" position={[0, -2 * height / 3, 0]}>
                 <InnerClouds count={1} />
                 <ambientLight color="blue" intensity={0.8} />
             </Frame>
