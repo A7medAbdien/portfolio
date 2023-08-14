@@ -9,6 +9,7 @@ import calcMaxWidth from '../Utils/calcMaxWidth'
 import { ContentFontProps, HeadlineFontProps } from '../Utils/fontProps'
 import InnerClouds from './InnerClouds'
 import { Frame, Rig } from './PortalComponents'
+import { enableScroll } from '../Utils/controlScroll'
 
 extend(geometry)
 
@@ -98,7 +99,7 @@ const InnerCard = () => {
             position={[0, backButtonPos, 0]}
             fontSize={0.09}
             color={'#000'}
-            onClick={() => setLocation('/')}
+            onClick={() => (setLocation('/'), enableScroll())}
         >
             {"{ BACK }"}
         </Text >

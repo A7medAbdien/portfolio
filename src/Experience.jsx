@@ -1,10 +1,12 @@
 import * as THREE from 'three'
-import { useRef, useState, createRef, forwardRef } from 'react'
+import { useRef, useState, createRef, forwardRef, useEffect } from 'react'
 import { Box, Cloud, Html, Line, OrbitControls, Scroll, ScrollControls, Text, useScroll } from '@react-three/drei'
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
 import { easing } from 'maath'
+import { useRoute, useLocation } from 'wouter'
+
 
 import IntroPage from './components/IntroPage'
 import Divider from './components/Divider'
@@ -12,11 +14,13 @@ import ProfilePage from './components/ProfilePage'
 import CursorSmoke from './components/CursorSmoke'
 import Clouds from './components/Clouds'
 import ProjectsPage from './components/ProjectsPage'
+import { disableScroll, enableScroll } from './Utils/controlScroll'
 
 
 export default function Experience() {
 
     const pagesNum = 5
+
     const { pagesScale, pagesPos } = useControls({
         pagesPos: {
             value: { y: 0.2, z: 2.5 },
@@ -28,13 +32,41 @@ export default function Experience() {
         },
     })
 
+    const [, params] = useRoute('/item/:id')
+    const [, setLocation] = useLocation()
+
+
+    const isParams = () => {
+        if (params?.id) {
+            return true
+        }
+        return false;
+    }
+
+    const onParamsActiveScroll = () => {
+        if (params?.id) {
+            disableScroll()
+        } else {
+            enableScroll()
+        }
+    }
+
+    useEffect(() => {
+        onParamsActiveScroll()
+    }, [params?.id])
+
+    useEffect(() => {
+        setLocation('/')
+    }, [])
+
+
     return <>
 
         <Perf position="top-left" />
 
         {/* <OrbitControls makeDefault /> */}
 
-        <ScrollControls damping={1} pages={pagesNum} >
+        <ScrollControls enabled={!isParams()} damping={1} pages={pagesNum} >
             <Scroll>
                 <group scale={pagesScale} position={[0, pagesPos.y, pagesPos.z]}>
                     <Pages pagesNum={pagesNum} />
