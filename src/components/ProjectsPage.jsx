@@ -1,17 +1,12 @@
-import * as THREE from 'three'
-import { useEffect, useRef, useState } from 'react'
-import { Box, CameraControls, Html, Line, MeshPortalMaterial, Sphere, Text, Torus, useCursor } from '@react-three/drei'
-import { extend, useFrame, useThree } from '@react-three/fiber'
+import { Text } from '@react-three/drei'
+import { extend, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
-import { Perf } from 'r3f-perf'
-import { useRoute, useLocation } from 'wouter'
 import { easing, geometry } from 'maath'
+import { useRoute, useLocation } from 'wouter'
 
-import ScrollArrow from './ScrollArrow/ScrollArrow'
-import Divider from './Divider'
+
 import calcMaxWidth from '../Utils/calcMaxWidth'
 import { ContentFontProps, HeadlineFontProps } from '../Utils/fontProps'
-import Clouds from './Clouds'
 import InnerClouds from './InnerClouds'
 import { Frame, Rig } from './PortalComponents'
 
@@ -21,21 +16,9 @@ export default function ProjectsPage({ pageOffset }) {
 
     const { viewport } = useThree()
     const { width, height } = viewport
-    const { innerTitlePos, innerImagePos, innerContentPos, titlePos } = useControls("My Work Page", {
+    const { titlePos } = useControls("My Work Page", {
         titlePos: {
             value: 1.2,
-            step: 0.01,
-        },
-        innerTitlePos: {
-            value: 1,
-            step: 0.01,
-        },
-        innerImagePos: {
-            value: -0.25,
-            step: 0.01,
-        },
-        innerContentPos: {
-            value: -.5,
             step: 0.01,
         },
         projectsPageDividerPos: {
@@ -79,13 +62,13 @@ export default function ProjectsPage({ pageOffset }) {
 }
 
 const InnerCard = () => {
-    const { innerTitlePos, innerImagePos, innerContentPos, titlePos } = useControls("My Work Page", {
-        titlePos: {
-            value: 1.2,
+    const { innerTitlePos, innerImagePos, innerContentPos, backButtonPos } = useControls("My Work Inner", {
+        backButtonPos: {
+            value: 1.1,
             step: 0.01,
         },
         innerTitlePos: {
-            value: 1,
+            value: 0.9,
             step: 0.01,
         },
         innerImagePos: {
@@ -103,15 +86,28 @@ const InnerCard = () => {
     })
 
     const { viewport } = useThree()
-    const { width, } = viewport
+    const { width } = viewport
+
+    const [, params] = useRoute('/item/:id')
+    const [, setLocation] = useLocation()
+
 
     return <group position={[0, 0, 0]} >
+        <Text
+            {...HeadlineFontProps}
+            position={[0, backButtonPos, 0]}
+            fontSize={0.09}
+            color={'#000'}
+            onClick={() => setLocation('/')}
+        >
+            {"{ BACK }"}
+        </Text >
         <Text
             {...HeadlineFontProps}
             position={[0, innerTitlePos, 0]}
             color={'#000'}
         >
-            {"{ PROFILE }"}
+            {"PROFILE"}
         </Text >
 
         <mesh position={[0, innerImagePos, 0]}>
