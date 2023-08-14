@@ -13,7 +13,7 @@ extend(geometry)
 
 const smoothTime = 0.4
 
-export function Frame({ id, name, author, bg = '#fff', width = 1, height = 1.61803398875, children, color = 'black', ...props }) {
+export function Portal({ id, name, author, bg = '#fff', width = 1, height = 1.61803398875, children, color = 'black', ...props }) {
     const { viewport } = useThree()
     const { width: viewportWidth } = viewport
     const portal = useRef()

@@ -12,7 +12,7 @@ import { useRef } from 'react'
 extend(geometry)
 
 
-const InnerCard = ({ id, ...props }) => {
+const InnerCard = ({ id, title, image, content, ...props }) => {
     const { innerTitlePos, innerImagePos, innerContentPos, backButtonPos } = useControls("My Work Inner", {
         backButtonPos: {
             value: 1.1,
@@ -29,11 +29,7 @@ const InnerCard = ({ id, ...props }) => {
         innerContentPos: {
             value: -1.5,
             step: 0.01,
-        },
-        projectsPageDividerPos: {
-            value: 0.5,
-            step: 0.01,
-        },
+        }
     })
 
     const { viewport } = useThree()
@@ -60,7 +56,7 @@ const InnerCard = ({ id, ...props }) => {
 
 
     return <>
-        {isActive && <group  {...props} position={[0, 0.3, 0]} >
+        {isActive && <group  {...props} position={[0, 0.4, 0]} >
             <Text
                 ref={backButton}
                 {...HeadlineFontProps}
@@ -71,13 +67,14 @@ const InnerCard = ({ id, ...props }) => {
             >
                 {"BACK"}
             </Text >
+
             <Text
                 ref={innerTitle}
                 {...HeadlineFontProps}
                 position={[0, innerTitlePos + 5, 0]}
                 color={'#000'}
             >
-                {"{ PROFILE }"}
+                {"{ ArtMixer }"}
             </Text >
 
             <mesh
@@ -95,9 +92,7 @@ const InnerCard = ({ id, ...props }) => {
                 position={[0, innerContentPos - 5, 0]}
                 color={'#000'}
             >
-                Hi, I'm Ahmed Abdin, a Software Developer based in Bahrain.
-                I'm always inspired by the great websites, apps and analysis from all over the world.
-                My current goal is to win an award for my work.
+                A 3D website, that mixes two images using Neural Style Transfer (NST) technique.
             </Text >
         </group>}
     </>
