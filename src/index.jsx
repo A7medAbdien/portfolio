@@ -4,6 +4,8 @@ import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
 import { Leva } from 'leva'
 import { Perf } from 'r3f-perf'
+import { Box, Loader } from '@react-three/drei'
+import { Suspense } from 'react'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
@@ -20,7 +22,10 @@ root.render(
         >
 
             {/* <Perf position="top-left" /> */}
-            <Experience />
+            <Suspense fallback={null}>
+                <Experience />
+            </Suspense>
         </Canvas>
+        <Loader />
     </>
 )
