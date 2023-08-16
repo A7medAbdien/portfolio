@@ -72,8 +72,8 @@ export default function ProjectsPage({ pageOffset }) {
                 </Text >
 
                 {portalContents.map(({ id, name, description, img, vid, link, bg }, i) =>
-                    <HoverableFrame position={[0, -i * (height / 3), 0]} alwaysActive>
-                        <Portal key={id} {...frameProps} id={id} name={name} >
+                    <HoverableFrame key={id} position={[0, -i * (height / 3), 0]} alwaysActive>
+                        <Portal {...frameProps} id={id} name={name} >
                             <InnerClouds count={1} />
                             <ambientLight color={bg} intensity={0.8} />
                             <InnerCard id={id} title={name} img={img} vid={vid} link={link} description={description} hoveredColor={bg} />
