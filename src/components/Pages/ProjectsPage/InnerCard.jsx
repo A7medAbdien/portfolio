@@ -52,6 +52,7 @@ const InnerCard = ({ id, title, img, vid, link, description, hoveredColor, ...pr
         if (isActive) {
             // easing.damp3(backButton.current.scale, [hovered ? 1.25 : 1, hovered ? 1.25 : 1, 1], smoothTime, delta)
             // easing.dampC(backButton.current.material.color, hovered ? hoveredColor : '#000')
+            easing.damp(backButton.current, "letterSpacing", hovered ? 0.15 : headlineFontProps.letterSpacing, smoothTime, delta)
             easing.damp3(backButton.current.position, [0, backButtonPos, 0], smoothTime, delta)
             easing.damp3(innerTitle.current.position, [0, innerTitlePos, 0], smoothTime, delta)
             easing.damp3(innerImage.current.position, [0, innerImagePos, 0], smoothTime, delta)
@@ -66,17 +67,24 @@ const InnerCard = ({ id, title, img, vid, link, description, hoveredColor, ...pr
 
     return <>
         {isActive && <group  {...props} position={[0, 0.4, 0]} >
+
             <Text
+                onClick={() => (setLocation('/'), enableScroll())}
                 ref={backButton}
                 {...headlineFontProps}
                 position={[0, backButtonPos + 5, 0]}
                 fontSize={0.1}
-                onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
-                onPointerOut={() => setHovered(false)}
-                onClick={() => (setLocation('/'), enableScroll())}
             >
                 {"BACK"}
+                <mesh
+                    onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+                    onPointerOut={() => setHovered(false)}
+                >
+                    <planeGeometry args={[headlineFontProps.fontSize * 2, headlineFontProps.fontSize]} />
+                    <meshBasicMaterial transparent opacity={0} />
+                </mesh>
             </Text >
+
 
             <Text
                 ref={innerTitle}

@@ -9,6 +9,7 @@ import InnerClouds from './InnerClouds'
 import { Portal, Rig } from './PortalComponents'
 import InnerCard from './InnerCard'
 import Divider from '../../Divider'
+import { HoverableFrame } from '../../../Utils/Frames'
 
 const portalContents = [
     {
@@ -71,11 +72,13 @@ export default function ProjectsPage({ pageOffset }) {
                 </Text >
 
                 {portalContents.map(({ id, name, description, img, vid, link, bg }, i) =>
-                    <Portal key={id} {...frameProps} id={id} name={name} position={[0, -i * (height / 3), 0]} >
-                        <InnerClouds count={1} />
-                        <ambientLight color={bg} intensity={0.8} />
-                        <InnerCard id={id} title={name} img={img} vid={vid} link={link} description={description} hoveredColor={bg} />
-                    </Portal>
+                    <HoverableFrame position={[0, -i * (height / 3), 0]} alwaysActive>
+                        <Portal key={id} {...frameProps} id={id} name={name} >
+                            <InnerClouds count={1} />
+                            <ambientLight color={bg} intensity={0.8} />
+                            <InnerCard id={id} title={name} img={img} vid={vid} link={link} description={description} hoveredColor={bg} />
+                        </Portal>
+                    </HoverableFrame>
                 )}
             </group>
 

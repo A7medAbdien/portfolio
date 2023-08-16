@@ -16,7 +16,7 @@ const Smokey = forwardRef(({ color = '#00bbbb', ...props }, ref) => {
     </>
 })
 
-const CursorSmoke = ({ count = 10, ratio = 1 }) => {
+const CursorSmoke = ({ count = 10, ratio = 1, color = "#00bbbb" }) => {
     const { smokePose } = useControls({
         smokePose: {
             value: 2.5,
@@ -49,10 +49,11 @@ const CursorSmoke = ({ count = 10, ratio = 1 }) => {
 
 
     return <>
-        <group ref={smokeGroup} scale={scale}>
+        <group ref={smokeGroup} position={[0, 0, -15]} scale={scale}>
             {refs.current.map((ref, index) =>
                 < Smokey
                     ref={ref}
+                    color={color}
                     key={index + "Smoke"}
                     position={
                         [
