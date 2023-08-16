@@ -2,7 +2,7 @@ import { Text } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 
 import { HeadlineFontProps } from '../../Utils/fontProps'
-import { HoverableFrame, LogoFrame } from '../../Utils/Frames'
+import { HoverableFrame, HoverableTextFrame, LogoFrame } from '../../Utils/Frames'
 import openLink from '../../Utils/openLink'
 import calcMaxWidth from '../../Utils/calcMaxWidth'
 
@@ -53,14 +53,14 @@ const ContactPage = ({ pageOffset = 0 }) => {
                 }
             </group>
 
-            <HoverableFrame alwaysActive position={[0, -height / 2, 0]}>
+            <HoverableTextFrame alwaysActive width={5} height={2} position={[0, -height / 2, 0]}>
                 <Text {...HeadlineFontProps}
                     fontSize={0.15}
                     onClick={() => openLink("/pdfs/CV.pdf")}
                 >
                     {" >  My  CV  < "}
                 </Text >
-            </HoverableFrame>
+            </HoverableTextFrame>
 
 
             <Text {...HeadlineFontProps}

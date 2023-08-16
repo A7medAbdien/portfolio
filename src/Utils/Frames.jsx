@@ -5,6 +5,7 @@ import { useFrame, useLoader } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import { easing } from 'maath';
 import { useRoute } from 'wouter';
+import { HeadlineFontProps } from './fontProps';
 
 export const HoverableFrame = ({ alwaysActive = false, children, position, rotation, shrinkX = 0.9, shrinkY = 0.9, colorNotScale = false }) => {
     const meshRef = useRef()
@@ -29,6 +30,36 @@ export const HoverableFrame = ({ alwaysActive = false, children, position, rotat
         >
             {children}
         </mesh>
+    )
+}
+export const HoverableTextFrame = ({ alwaysActive = false, width = 2, height = 1, children, ...props }) => {
+    const meshRef = useRef()
+    const [hovered, setHovered] = useState(false)
+    const [, params] = useRoute('/:id')
+    const isActive = alwaysActive ? true : params?.id != null
+
+    useCursor(hovered)
+    useFrame((_, dt) => {
+        easing.damp(meshRef.current.children[0], "letterSpacing", isActive && hovered ? 0.15 : HeadlineFontProps.letterSpacing, 0.1, dt)
+        // console.log(meshRef.current);
+        // console.log(isActive && hovered);
+    })
+
+    return (
+        <group
+            ref={meshRef}
+            {...props}
+        >
+            {children}
+            <mesh
+                onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+                onPointerOut={() => setHovered(false)}
+                position={[0, 0, 0.01]}
+            >
+                <planeGeometry args={[HeadlineFontProps.fontSize * width, HeadlineFontProps.fontSize * height]} />
+                <meshBasicMaterial transparent opacity={0} />
+            </mesh>
+        </group>
     )
 }
 

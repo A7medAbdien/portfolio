@@ -8,7 +8,7 @@ import { useRoute, useLocation } from 'wouter'
 import { ContentFontProps, HeadlineFontProps } from '../../../Utils/fontProps'
 import { enableScroll } from '../../../Utils/controlScroll'
 import { useRef, useState } from 'react'
-import { HoverableFrame, ImageFrame, VideoFrame } from '../../../Utils/Frames'
+import { HoverableFrame, HoverableTextFrame, ImageFrame, VideoFrame } from '../../../Utils/Frames'
 import calcMaxWidth from '../../../Utils/calcMaxWidth'
 import openLink from '../../../Utils/openLink'
 
@@ -53,7 +53,7 @@ const InnerCard = ({ id, title, img, vid, link, description, hoveredColor, ...pr
             // easing.damp3(backButton.current.scale, [hovered ? 1.25 : 1, hovered ? 1.25 : 1, 1], smoothTime, delta)
             // easing.dampC(backButton.current.material.color, hovered ? hoveredColor : '#000')
             easing.damp(backButton.current, "letterSpacing", hovered ? 0.15 : headlineFontProps.letterSpacing, smoothTime, delta)
-            easing.damp3(backButton.current.position, [0, backButtonPos, 0], smoothTime, delta)
+            easing.damp3(backButton.current.position, [0, 0, 0], smoothTime, delta)
             easing.damp3(innerTitle.current.position, [0, innerTitlePos, 0], smoothTime, delta)
             easing.damp3(innerImage.current.position, [0, innerImagePos, 0], smoothTime, delta)
             easing.damp3(innerContent.current.position, [0, innerContentPos, 0], smoothTime, delta)
@@ -68,23 +68,21 @@ const InnerCard = ({ id, title, img, vid, link, description, hoveredColor, ...pr
     return <>
         {isActive && <group  {...props} position={[0, 0.4, 0]} >
 
-            <Text
+            <HoverableTextFrame
+                position={[0, backButtonPos, 0]}
+                width={2.5}
+                height={1.3}
                 onClick={() => (setLocation('/'), enableScroll())}
-                ref={backButton}
-                {...headlineFontProps}
-                position={[0, backButtonPos + 5, 0]}
-                fontSize={0.1}
             >
-                {"BACK"}
-                <mesh
-                    onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
-                    onPointerOut={() => setHovered(false)}
+                <Text
+                    ref={backButton}
+                    {...headlineFontProps}
+                    position={[0, 5, 0]}
+                    fontSize={0.1}
                 >
-                    <planeGeometry args={[headlineFontProps.fontSize * 2, headlineFontProps.fontSize]} />
-                    <meshBasicMaterial transparent opacity={0} />
-                </mesh>
-            </Text >
-
+                    {"BACK"}
+                </Text >
+            </HoverableTextFrame>
 
             <Text
                 ref={innerTitle}
