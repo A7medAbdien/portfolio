@@ -7,7 +7,7 @@ import { easing } from 'maath';
 import { useRoute } from 'wouter';
 import { HeadlineFontProps } from './fontProps';
 
-export const HoverableFrame = ({ alwaysActive = false, children, position, rotation, shrinkX = 0.9, shrinkY = 0.9, colorNotScale = false }) => {
+export const HoverableFrame = ({ alwaysActive = false, children, position, rotation, shrinkX = 0.9, shrinkY = 0.9, changeColor = false, changeColorTo = "#006666" }) => {
     const meshRef = useRef()
     const [hovered, setHovered] = useState(false)
     const [, params] = useRoute('/:id')
@@ -15,8 +15,9 @@ export const HoverableFrame = ({ alwaysActive = false, children, position, rotat
 
     useCursor(hovered)
     useFrame((state, dt) => {
-        !colorNotScale && easing.damp3(meshRef.current.scale, [(isActive && hovered ? shrinkX : 1), (isActive && hovered ? shrinkY : 1), 1], 0.1, dt)
-        colorNotScale && easing.dampC(meshRef.current.children[0].material.color, hovered ? '#4f75ca' : '#000')
+        easing.damp3(meshRef.current.scale, [(isActive && hovered ? shrinkX : 1), (isActive && hovered ? shrinkY : 1), 1], 0.1, dt)
+        changeColor && easing.dampC(meshRef.current.material.color, hovered ? changeColorTo : '#fff')
+        // console.log(meshRef.current);
     })
 
     return (

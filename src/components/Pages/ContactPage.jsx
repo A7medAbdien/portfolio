@@ -42,7 +42,7 @@ const ContactPage = ({ pageOffset = 0 }) => {
 
             <group scale={calcMaxWidth(width) / 3 > 0.7 ? 0.7 : calcMaxWidth(width) / 3} position={[0, -height / 2 + 1, 0]}>
                 {logos.map(({ position, imgUrl, link }, i) =>
-                    <HoverableFrame alwaysActive key={i} position={position}>
+                    <HoverableFrame alwaysActive changeColor key={i} position={position}>
                         <planeGeometry args={[1, 1]} />
                         <LogoFrame
                             url={imgUrl}
