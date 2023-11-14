@@ -67,7 +67,7 @@ export const HoverableTextFrame = ({ alwaysActive = false, width = 2, height = 1
 export const LogoFrame = ({ url, color = '#fff', ...props }) => {
     const logoTexture = useLoader(THREE.TextureLoader, url)
     return <>
-        <meshLambertMaterial color={color} map={logoTexture} transparent />
+        <meshBasicMaterial color={color} map={logoTexture} transparent />
     </>
 }
 

@@ -7,5 +7,25 @@ body,
     width: 100%;
     height: 100%;
     background: #000000;
-    cursor: url('/svgs/cursor.svg'), auto;
+    /* cursor: url('/svgs/cursor.svg'), auto; */
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #004f4f;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #003333;
 }

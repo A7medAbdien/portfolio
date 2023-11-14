@@ -15,9 +15,9 @@ export default function ScrollArrow({ x, y }) {
         <group
             position={[x, y, 0]}
         >
-            <Text position={[0, 0.2, 0]} {...fontProps} >
+            {/* <Text position={[0, 0.2, 0]} {...fontProps} >
                 Scroll
-            </Text >
+            </Text > */}
 
             <Html
                 transform

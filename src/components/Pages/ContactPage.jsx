@@ -5,25 +5,7 @@ import { HeadlineFontProps } from '../../Utils/fontProps'
 import { HoverableFrame, HoverableTextFrame, LogoFrame } from '../../Utils/Frames'
 import openLink from '../../Utils/openLink'
 import calcMaxWidth from '../../Utils/calcMaxWidth'
-
-
-const logos = [
-    {
-        position: [-1.2, 0, 0],
-        imgUrl: '/imgs/github.png',
-        link: "https://github.com/A7medAbdien"
-    },
-    {
-        position: [0, 0, 0],
-        imgUrl: '/imgs/linkedin.png',
-        link: "https://www.linkedin.com/in/ahmed-abdin-90a957187/"
-    },
-    {
-        position: [1.2, 0, 0],
-        imgUrl: '/imgs/whatsapp.png',
-        link: "https://wa.me/97334533638?text=Hi%20Ahmed..."
-    },
-]
+import { logos } from '../../../data'
 
 const ContactPage = ({ pageOffset = 0 }) => {
 

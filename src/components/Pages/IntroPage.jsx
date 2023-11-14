@@ -5,13 +5,17 @@ import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
 import ScrollArrow from '../ScrollArrow/ScrollArrow'
 import Divider from '../Divider'
+import calcMaxWidth from '../../Utils/calcMaxWidth'
+import { logos } from '../../../data'
+import { HoverableFrame, HoverableTextFrame, LogoFrame } from '../../Utils/Frames'
+import { HeadlineFontProps } from '../../Utils/fontProps'
 
 
 export default function IntroPage({ showScroll }) {
 
     const { viewport } = useThree()
-    const { height } = viewport
-    const { introPageDividerPos, jopTitlePos, scrollPos, namePos } = useControls({
+    const { width, height } = viewport
+    const { introPageDividerPos, jopTitlePos, scrollPos, namePos, logosPos } = useControls({
         namePos: {
             value: { x: 0, y: 1 },
             joystick: 'invertY',
@@ -32,6 +36,11 @@ export default function IntroPage({ showScroll }) {
             joystick: 'invertY',
             step: 0.01,
         },
+        logosPos: {
+            value: { x: 0, y: 0 },
+            joystick: 'invertY',
+            step: 0.01,
+        }
     })
 
     const fontProps = {
@@ -67,11 +76,27 @@ export default function IntroPage({ showScroll }) {
                     SOFTWARE  DEVELOPER
                 </Text >
 
-                <Text
-                    {...fontProps}
-                    position={[0, -0.2, 0]}>
-                    {"{ BASED IN BAHRAIN }"}
-                </Text >
+                <group scale={calcMaxWidth(width) / 3 > 0.25 ? 0.25 : calcMaxWidth(width) / 3} position={[0, 0 - 0.35, 0]}>
+                    {logos.map(({ position, imgUrl, link }, i) =>
+                        <HoverableFrame alwaysActive changeColor key={i} position={position}>
+                            <planeGeometry args={[1, 1]} />
+                            <LogoFrame
+                                url={imgUrl}
+                                scale={0.25}
+                                onClick={() => openLink(link)}
+                            />
+                        </HoverableFrame>)
+                    }
+                </group>
+
+                <HoverableTextFrame alwaysActive width={5} height={2} position={[0, 0 - 0.7, 0]}>
+                    <Text {...HeadlineFontProps}
+                        fontSize={0.15}
+                        onClick={() => openLink("/pdfs/CV.pdf")}
+                    >
+                        {" >  My  CV  < "}
+                    </Text >
+                </HoverableTextFrame>
             </group>
 
             {showScroll && <ScrollArrow x={scrollPos.x} y={scrollPos.y} />}

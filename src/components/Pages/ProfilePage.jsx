@@ -4,6 +4,7 @@ import { useControls } from 'leva'
 import Divider from '../Divider'
 import calcMaxWidth from '../../Utils/calcMaxWidth'
 import { HeadlineFontProps, ContentFontProps } from '../../Utils/fontProps'
+import { skills, summary, whatICanDo } from '../../../data'
 
 export default function ProfilePage({ pageOffset }) {
 
@@ -20,7 +21,7 @@ export default function ProfilePage({ pageOffset }) {
             step: 0.01,
         },
         skillPos: {
-            value: -3.8,
+            value: -3.85,
             step: 0.01,
         },
         dividerPos: {
@@ -45,11 +46,9 @@ export default function ProfilePage({ pageOffset }) {
                 <Text
                     {...contentFontProps}
                     textAlign='justify'
-                    position={[0, - 0.51, 0]}
+                    position={[0, - 0.59, 0]}
                 >
-                    Hi, I'm Ahmed Abdin, a Software Developer based in Bahrain.
-                    I'm always inspired by the great websites, apps and analysis from all over the world.
-                    My current goal is to win an award for my work.
+                    {summary}
                 </Text >
             </group>
 
@@ -60,14 +59,9 @@ export default function ProfilePage({ pageOffset }) {
 
                 <Text
                     {...contentFontProps}
-                    position={[0, - 0.65, 0]}
+                    position={[0, - 0.7, 0]}
                 >
-                    - Websites{'\n'}
-                    - 3D Websites{'\n'}
-                    - Applications{'\n'}
-                    - Augmented Reality Applications{'\n'}
-                    - Machine Learning Models{'\n'}
-                    - Computer Version Projects{'\n'}
+                    {whatICanDo}
                 </Text >
             </group>
 
@@ -78,13 +72,9 @@ export default function ProfilePage({ pageOffset }) {
 
                 <Text
                     {...contentFontProps}
-                    position={[0, - 0.6, 0]}
+                    position={[0, - 0.7, 0]}
                 >
-                    - HTML, CSS, PHP{'\n'}
-                    - React{'\n'}
-                    - Three.js, React three fiber{'\n'}
-                    - Kotlin (Android){'\n'}
-                    - Python (numpy, pandas, Tensorflow API){'\n'}
+                    {skills}
                 </Text >
             </group>
 
