@@ -22,13 +22,13 @@ const ContactPage = ({ pageOffset = 0 }) => {
             </Text >
 
 
-            <group scale={calcMaxWidth(width) / 3 > 0.7 ? 0.7 : calcMaxWidth(width) / 3} position={[0, -height / 2 + 1, 0]}>
+            <group scale={calcMaxWidth(width) / 3 > 0.45 ? 0.45 : calcMaxWidth(width) / 3} position={[0, -height / 2 + 1, 0]}>
                 {logos.map(({ position, imgUrl, link }, i) =>
                     <HoverableFrame alwaysActive changeColor key={i} position={position}>
                         <planeGeometry args={[1, 1]} />
                         <LogoFrame
                             url={imgUrl}
-                            scale={0.7}
+                            scale={0.45}
                             onClick={() => openLink(link)}
                         />
                     </HoverableFrame>)
