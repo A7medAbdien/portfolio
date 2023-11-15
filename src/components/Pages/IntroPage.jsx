@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import { Html, Line, OrbitControls, Scroll, ScrollControls, Text, useScroll } from '@react-three/drei'
-import { useFrame, useThree } from '@react-three/fiber'
+import { Text } from '@react-three/drei'
+import { useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
-import { Perf } from 'r3f-perf'
 import ScrollArrow from '../ScrollArrow/ScrollArrow'
 import Divider from '../Divider'
 import calcMaxWidth from '../../Utils/calcMaxWidth'
 import { logos } from '../../../data'
 import { HoverableFrame, HoverableTextFrame, LogoFrame } from '../../Utils/Frames'
 import { HeadlineFontProps } from '../../Utils/fontProps'
+import openLink from '../../Utils/openLink'
 
 
 export default function IntroPage({ showScroll }) {
@@ -78,12 +77,11 @@ export default function IntroPage({ showScroll }) {
 
                 <group scale={calcMaxWidth(width) / 3 > 0.25 ? 0.25 : calcMaxWidth(width) / 3} position={[0, 0 - 0.35, 0]}>
                     {logos.map(({ position, imgUrl, link }, i) =>
-                        <HoverableFrame alwaysActive changeColor key={i} position={position}>
+                        <HoverableFrame onClick={() => openLink(link)} alwaysActive changeColor key={i} position={position}>
                             <planeGeometry args={[1, 1]} />
                             <LogoFrame
                                 url={imgUrl}
                                 scale={0.25}
-                                onClick={() => openLink(link)}
                             />
                         </HoverableFrame>)
                     }

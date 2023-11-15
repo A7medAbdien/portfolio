@@ -24,21 +24,22 @@ const ContactPage = ({ pageOffset = 0 }) => {
 
             <group scale={calcMaxWidth(width) / 3 > 0.45 ? 0.45 : calcMaxWidth(width) / 3} position={[0, -height / 2 + 1, 0]}>
                 {logos.map(({ position, imgUrl, link }, i) =>
-                    <HoverableFrame alwaysActive changeColor key={i} position={position}>
+                    <HoverableFrame alwaysActive changeColor key={i} position={position}
+                        onClick={() => openLink(link)}>
                         <planeGeometry args={[1, 1]} />
                         <LogoFrame
                             url={imgUrl}
                             scale={0.45}
-                            onClick={() => openLink(link)}
                         />
                     </HoverableFrame>)
                 }
             </group>
 
-            <HoverableTextFrame alwaysActive width={5} height={2} position={[0, -height / 2, 0]}>
+            <HoverableTextFrame alwaysActive width={5} height={2} position={[0, -height / 2, 0]}
+                onClick={() => openLink("/pdfs/CV.pdf")}
+            >
                 <Text {...HeadlineFontProps}
                     fontSize={0.15}
-                    onClick={() => openLink("/pdfs/CV.pdf")}
                 >
                     {" >  My  CV  < "}
                 </Text >

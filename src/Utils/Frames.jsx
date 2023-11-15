@@ -7,7 +7,7 @@ import { easing } from 'maath';
 import { useRoute } from 'wouter';
 import { HeadlineFontProps } from './fontProps';
 
-export const HoverableFrame = ({ alwaysActive = false, children, position, rotation, shrinkX = 0.9, shrinkY = 0.9, changeColor = false, changeColorTo = "#006666" }) => {
+export const HoverableFrame = ({ alwaysActive = false, children, position, rotation, shrinkX = 0.9, shrinkY = 0.9, changeColor = false, changeColorTo = "#006666", ...props }) => {
     const meshRef = useRef()
     const [hovered, setHovered] = useState(false)
     const [, params] = useRoute('/:id')
@@ -22,6 +22,7 @@ export const HoverableFrame = ({ alwaysActive = false, children, position, rotat
 
     return (
         <mesh
+            {...props}
             ref={meshRef}
             scale={[1, 0.5]}
             onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
