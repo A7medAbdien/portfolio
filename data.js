@@ -1,9 +1,47 @@
-export const meta = {
+export const data = {
     name: "Ahmed.A",
     job: "Software Engineer",
     cv: "/pdfs/CV.pdf",
+    skills: {
+        title: "Skills", skills: [
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "Typescript"
+            },
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "Go"
+            },
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "React"
+            },
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "gin"
+            },
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "MongoDB"
+            },
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "PostgresSQL"
+            },
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "Vercel"
+            },
+        ]
+    },
 }
+
 export const logos = [
+    {
+        position: [-1.2, 0, 0],
+        imgUrl: '/svg/typescript.svg',
+        link: "https://github.com/A7medAbdien"
+    },
     {
         position: [-1.2, 0, 0],
         imgUrl: '/imgs/github.png',

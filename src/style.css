@@ -116,10 +116,6 @@ h2 {
 
     color: #f1f1f1;
 
-    /* position: absolute;
-    top: 200%;
-    z-index: 2; */
-
     width: 60%;
     text-align: center;
 
@@ -147,6 +143,49 @@ h2 {
 }
 
 .intro-portions {
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
     width: 100%;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    top: -40px;
+    left: 25%;
+    z-index: 1;
+
+    /* Animation */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
