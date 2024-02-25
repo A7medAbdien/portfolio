@@ -8,7 +8,7 @@ const Clouds = ({ count }) => {
     const { width, height } = viewport
     const { cloudPos } = useControls({
         cloudPos: {
-            value: { x: width / 2.5, y: -1 },
+            value: { x: width, y: -1 },
             joystick: 'invertY',
             step: 0.1,
         },

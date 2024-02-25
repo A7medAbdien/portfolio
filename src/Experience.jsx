@@ -69,8 +69,6 @@ export default function Experience() {
             </Scroll>
         </ScrollControls >
 
-        <CursorSmoke />
-
         <directionalLight color="#fff" intensity={0.8} position={[0, 0, 3]} />
 
         {/* <axesHelper args={[5]} /> */}
