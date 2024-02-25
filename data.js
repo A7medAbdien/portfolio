@@ -36,37 +36,26 @@ export const data = {
             {
                 id: "React-icon",
                 place: "top",
-                img: '/svg/typescript.svg',
+                img: '/svg/react.svg',
                 text: "React"
             },
             {
                 id: "Go-icon",
                 place: "top",
-                img: '/svg/typescript.svg',
-                text: "Go"
-            },
-            {
-                id: "Gin-icon",
-                place: "top",
-                img: '/svg/typescript.svg',
-                text: "Gin"
+                img: '/svg/golang.svg',
+                text: "Go",
+                size: 40
             },
             {
                 id: "MongoDB-icon",
                 place: "top",
-                img: '/svg/typescript.svg',
+                img: '/svg/mongodb.svg',
                 text: "MongoDB"
-            },
-            {
-                id: "Vercel-icon",
-                place: "top",
-                img: '/svg/typescript.svg',
-                text: "Vercel"
             },
             {
                 id: "Three-icon",
                 place: "top",
-                img: '/svg/typescript.svg',
+                img: '/svg/threejs.svg',
                 text: "Three.js"
             },
         ]
@@ -83,24 +72,17 @@ export const data = {
                     {
                         id: "Go-Go-Restaurant",
                         place: "left",
-                        img: '/svg/typescript.svg',
+                        img: '/svg/golang.svg',
                         text: "Go"
-                    },
-                    {
-                        id: "Gin-Go-Restaurant",
-                        place: "top",
-                        img: '/svg/typescript.svg',
-                        text: "Gin"
                     },
                     {
                         id: "MongoDB-Go-Restaurant",
                         place: "top",
-                        img: '/svg/typescript.svg',
+                        img: '/svg/mongodb.svg',
                         text: "MongoDB"
                     },
                 ],
-                link: 'https://github.com/A7medAbdien/ArtMixer',
-                repo: 'https://github.com/A7medAbdien/ArtMixer',
+                repo: 'https://github.com/A7medAbdien/Go-CRM-Backend',
                 bg: 'red'
             },
             {
@@ -110,18 +92,30 @@ export const data = {
                     {
                         id: "React-ProShop",
                         place: "left",
-                        img: '/svg/typescript.svg',
+                        img: '/svg/react.svg',
                         text: "React"
+                    },
+                    {
+                        id: "Express.js-ProShop",
+                        place: "top",
+                        img: '/svg/express-js.svg',
+                        text: "Express.js"
+                    },
+                    {
+                        id: "Node.js-ProShop",
+                        place: "top",
+                        img: '/svg/node-js.svg',
+                        text: "Node.js"
                     },
                     {
                         id: "MongoDB-ProShop",
                         place: "top",
-                        img: '/svg/typescript.svg',
+                        img: '/svg/mongodb.svg',
                         text: "MongoDB"
                     },
                 ],
-                link: 'https://github.com/A7medAbdien/ArtMixer',
-                repo: 'https://github.com/A7medAbdien/ArtMixer',
+                link: 'https://proshop-ebur.onrender.com/',
+                repo: 'https://github.com/A7medAbdien/proshop',
                 bg: 'red'
             },
             // {
@@ -152,17 +146,17 @@ export const data = {
                     {
                         id: "React-ArtMixer",
                         place: "top",
-                        img: '/svg/typescript.svg',
+                        img: '/svg/react.svg',
                         text: "React"
                     },
                     {
                         id: "Three-ArtMixer",
                         place: "top",
-                        img: '/svg/typescript.svg',
+                        img: '/svg/threejs.svg',
                         text: "Three.js"
                     },
                 ],
-                link: 'https://github.com/A7medAbdien/ArtMixer',
+                link: 'https://art-mixer.vercel.app/',
                 repo: 'https://github.com/A7medAbdien/ArtMixer',
                 bg: 'red'
             },
@@ -173,18 +167,18 @@ export const data = {
                     {
                         id: "Android-SafeDistance",
                         place: "top",
-                        img: '/svg/typescript.svg',
-                        text: "Vercel"
+                        img: '/svg/android.svg',
+                        text: "Android"
                     },
                     {
                         id: "Python-SafeDistance",
                         place: "top",
-                        img: '/svg/typescript.svg',
+                        img: '/svg/python.svg',
                         text: "Python"
                     },
                 ],
-                link: 'https://github.com/A7medAbdien/safeDistanceProject',
-                repo: 'https://github.com/A7medAbdien/ArtMixer',
+                link: 'https://youtu.be/jVohDX-kcaE',
+                repo: 'https://github.com/A7medAbdien/safeDistanceProject',
                 bg: 'green'
             }
         ]

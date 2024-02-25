@@ -36,10 +36,10 @@ const ProjectCard = ({ name, skills, description, repo, link }) => {
                 </div>
                 <div className="project-link">
                     {repo && <a href={repo}>
-                        <img width={40} src={data.projects.repoLogo} />
+                        <Icon img={data.projects.repoLogo} text={"Code!"} id={"repo"} size={40} />
                     </a>}
                     {link && <a href={link}>
-                        <img width={40} src={data.projects.linkLogo} />
+                        <Icon img={data.projects.linkLogo} text={"Go!"} id={"live"} size={40} />
                     </a>}
                 </div>
             </div>
