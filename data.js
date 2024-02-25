@@ -1,3 +1,8 @@
+export const meta = {
+    name: "Ahmed.A",
+    job: "Software Engineer",
+    cv: "/pdfs/CV.pdf",
+}
 export const logos = [
     {
         position: [-1.2, 0, 0],
@@ -16,7 +21,8 @@ export const logos = [
     },
 ]
 
-export const summary = `Hi, I'm Ahmed Abdin, a Software Developer based in Bahrain. I am a persistent and highly motivated developer with a flair for programming and data analysis. Looking to learn and engage in a thriving and fast-paced environment where excellent Problem-solving skills will be utilized and appreciated.`
+export const summary = `I build full stack web applications when I am bored`
+export const summary2 = `Writing websites and API's since 2020`
 
 export const whatICanDo =
     `- Websites (MERN Stack, .Net)

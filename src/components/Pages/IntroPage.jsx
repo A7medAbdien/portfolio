@@ -53,7 +53,7 @@ export default function IntroPage({ showScroll }) {
     return <>
         <group scale={0.8}>
 
-            <group position={[namePos.x, namePos.y, 0]}>
+            {/* <group position={[namePos.x, namePos.y, 0]}>
                 <Text
                     {...fontProps}
                     position={[0, 0.4, 0]}>
@@ -66,7 +66,7 @@ export default function IntroPage({ showScroll }) {
                     fontSize={0.4}>
                     AHMED.A
                 </Text >
-            </group>
+            </group> */}
 
             <group position={[jopTitlePos.x, jopTitlePos.y, 0]}>
                 <Text

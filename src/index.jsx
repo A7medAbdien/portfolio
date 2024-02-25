@@ -6,6 +6,7 @@ import { Leva } from 'leva'
 import { Perf } from 'r3f-perf'
 import { Box, Loader } from '@react-three/drei'
 import { Suspense } from 'react'
+import { Overlay } from './Overlay.jsx'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
@@ -21,11 +22,11 @@ root.render(
             }}
         >
 
-            {/* <Perf position="top-left" /> */}
             <Suspense fallback={null}>
                 <Experience />
             </Suspense>
         </Canvas>
+        {/* <Overlay /> */}
         <Loader />
     </>
 )
