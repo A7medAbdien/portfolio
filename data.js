@@ -18,21 +18,35 @@ export const data = {
         {
             id: 'github',
             place: "top",
-            text: 'A7medAbdien',
+            text: 'A7medAbdien 👨‍💻',
             img: '/imgs/github.png',
             link: "https://github.com/A7medAbdien"
         },
         {
             id: 'linkedin',
             place: "top",
-            text: 'linkedin',
+            text: 'LinkedIn 🥲',
             img: '/imgs/linkedin.png',
             link: "https://www.linkedin.com/in/ahmed-abdin-90a957187/"
         },
         {
+            id: 'cv',
+            place: "top",
+            text: 'Get my CV 📃',
+            img: '/imgs/resume.png',
+            link: "/pdfs/CV.pdf"
+        },
+        {
+            id: 'gmail',
+            place: "top",
+            text: 'Email me 📧',
+            img: '/svg/gmail.svg',
+            link: "https://wa.me/97334533638?text=Hi%20Ahmed..."
+        },
+        {
             id: 'whatsapp',
             place: "top",
-            text: 'Hi ^^',
+            text: 'Say Hi 👋',
             img: '/imgs/whatsapp.png',
             link: "https://wa.me/97334533638?text=Hi%20Ahmed..."
         },

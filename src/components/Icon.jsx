@@ -3,7 +3,7 @@ import { Tooltip } from "react-tooltip";
 export const Icon = ({ id, img, link, text, place, size = 35 }) => {
     return (
         <>
-            {link && <a href={link} >
+            {link && <a href={link} target="_blank">
                 <img src={img} width={size} alt="" data-tooltip-id={id} />
             </a>}
             {!link && <img src={img} width={size} alt="" data-tooltip-id={id} />}

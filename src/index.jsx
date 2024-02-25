@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
 import { Leva } from 'leva'
-import { Perf } from 'r3f-perf'
-import { Box, Loader } from '@react-three/drei'
+import { Loader } from '@react-three/drei'
 import { Suspense } from 'react'
-import { Overlay } from './Overlay.jsx'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
     <>
-        <Leva collapsed />
+        <Leva collapsed hidden />
         <Canvas
             camera={{
                 fov: 45,
@@ -26,7 +24,6 @@ root.render(
                 <Experience />
             </Suspense>
         </Canvas>
-        {/* <Overlay /> */}
         <Loader />
     </>
 )
