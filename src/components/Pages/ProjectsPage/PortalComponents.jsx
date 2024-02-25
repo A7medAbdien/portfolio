@@ -13,24 +13,22 @@ extend(geometry)
 
 const smoothTime = 0.4
 
-export function Portal({ id, name, author, bg = '#fff', width = 1, height = 1.61803398875, children, color = 'black', ...props }) {
+export function Portal({ id, name, author, bg = '#f1f1f1', width = 1, height = 1.61803398875, children, color = 'black', ...props }) {
     const { viewport } = useThree()
     const { width: viewportWidth } = viewport
     const portal = useRef()
     const [, setLocation] = useLocation()
     const [, params] = useRoute('/:id')
     const [hovered, hover] = useState(false)
-    useCursor(hovered)
+    // useCursor(hovered)
     useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, smoothTime, dt))
     return (
         <group {...props}>
-            <Text {...HeadlineFontProps} color={color} fontSize={viewportWidth < 4.5 ? 0.25 : 0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-width / 2 + 0.1, 0.14, 0.01]} >
+            <Text {...HeadlineFontProps} color={color} fontSize={viewportWidth < 4.5 ? 0.4 : 0.5} anchorY="top" anchorX="left" lineHeight={0.8} position={[-1.05, 0.14, 0.01]} >
                 {name}
             </Text>
-            <Text {...HeadlineFontProps} color={color} anchorX="right" position={[width / 2 - 0.1, -height / 2 + 0.11, 0.01]} >
-                /{id}
-            </Text>
-            <mesh name={id} onClick={(e) => (e.stopPropagation(), setLocation('/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
+
+            <mesh name={id} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
                 <roundedPlaneGeometry args={[width, height]} />
                 <MeshPortalMaterial ref={portal} events={params?.id === id} side={THREE.DoubleSide}>
                     <color attach="background" args={[bg]} />

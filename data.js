@@ -157,7 +157,7 @@ export const data = {
                 skills: [
                     {
                         id: "React-ArtMixer",
-                        place: "top",
+                        place: "left",
                         img: '/svg/react.svg',
                         text: "React"
                     },
@@ -178,7 +178,7 @@ export const data = {
                 skills: [
                     {
                         id: "Android-SafeDistance",
-                        place: "top",
+                        place: "left",
                         img: '/svg/android.svg',
                         text: "Android"
                     },

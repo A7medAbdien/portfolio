@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
     <>
-        <Leva collapsed hidden />
+        <Leva collapsed />
         <Canvas
             camera={{
                 fov: 45,
