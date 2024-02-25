@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
-import { OrbitControls, Scroll, ScrollControls, useScroll } from '@react-three/drei'
+import { Scroll, ScrollControls, useScroll } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { useRoute, useLocation } from 'wouter'
 
 import IntroPage from './components/Pages/IntroPage'
 import ProfilePage from './components/Pages/ProfilePage'
-import CursorSmoke from './components/CursorSmoke'
 import Clouds from './components/Clouds'
 import ProjectsPage from './components/Pages/ProjectsPage/ProjectsPage'
 import { disableScroll, enableScroll } from './Utils/controlScroll'
 import ContactPage from './components/Pages/ContactPage'
+import { Overlay } from './Overlay'
 
 
 export default function Experience() {
@@ -66,6 +66,9 @@ export default function Experience() {
                     <Pages pagesNum={pagesNum} />
                 </group>
                 <Clouds count={pagesNum} />
+            </Scroll>
+            <Scroll html style={{ width: '100%' }}>
+                <Overlay />
             </Scroll>
         </ScrollControls >
 
