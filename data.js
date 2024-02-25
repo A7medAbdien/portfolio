@@ -10,15 +10,15 @@ export const data = {
             },
             {
                 svg: '/svg/typescript.svg',
-                toolTip: "Go"
-            },
-            {
-                svg: '/svg/typescript.svg',
                 toolTip: "React"
             },
             {
                 svg: '/svg/typescript.svg',
-                toolTip: "gin"
+                toolTip: "Go"
+            },
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "Gin"
             },
             {
                 svg: '/svg/typescript.svg',
@@ -26,14 +26,52 @@ export const data = {
             },
             {
                 svg: '/svg/typescript.svg',
-                toolTip: "PostgresSQL"
+                toolTip: "Vercel"
             },
             {
                 svg: '/svg/typescript.svg',
-                toolTip: "Vercel"
+                toolTip: "Three.js"
+            },
+            {
+                svg: '/svg/typescript.svg',
+                toolTip: "Three.js"
             },
         ]
     },
+
+    projects: {
+        title: "Projects",
+        repoLogo: '/svg/github.svg',
+        linkLogo: '/svg/open-link.svg',
+        projects: [
+            {
+                id: '01',
+                name: 'ArtMixer',
+                description: 'A 3D website, that mixes two images.',
+                skills: [
+
+                ],
+                link: 'https://github.com/A7medAbdien/ArtMixer',
+                bg: 'red'
+            },
+            {
+                id: '02',
+                name: 'SafeDistance',
+                description: 'App for Measure the safe distance (2 meters) using the camera phone.',
+                vid: '/vids/safeDistanceVid.mp4',
+                link: 'https://github.com/A7medAbdien/safeDistanceProject',
+                bg: 'green'
+            },
+            {
+                id: '03',
+                name: 'ToxicTweets',
+                description: 'Machine learning model that classify positive and negative tweets.',
+                img: '/imgs/toxicTweetsImg.png',
+                link: 'https://colab.research.google.com/drive/1L472f5lxBHfFAmlTO7JCpvag9YFuxiwb?usp=sharing',
+                bg: 'blue'
+            },
+        ]
+    }
 }
 
 export const logos = [
@@ -83,15 +121,16 @@ export const portalContents = [
     {
         id: '01',
         name: 'ArtMixer',
-        description: 'A 3D website, that mixes two images using Neural Style Transfer (NST) technique.',
-        img: '/imgs/artMixerImg.png',
+        description: 'A 3D website, that mixes two images.',
+        img: '/svg/open-link.svg',
+        repo: '/svg/github.svg',
         link: 'https://github.com/A7medAbdien/ArtMixer',
         bg: 'red'
     },
     {
         id: '02',
         name: 'SafeDistance',
-        description: 'During COVID-19, Measure the safe distance (2 meters) using the camera phone.',
+        description: 'App for Measure the safe distance (2 meters) using the camera phone.',
         vid: '/vids/safeDistanceVid.mp4',
         link: 'https://github.com/A7medAbdien/safeDistanceProject',
         bg: 'green'
@@ -99,7 +138,7 @@ export const portalContents = [
     {
         id: '03',
         name: 'ToxicTweets',
-        description: 'Machine learning model that classify positive and negative (toxic) Twitter tweets.',
+        description: 'Machine learning model that classify positive and negative tweets.',
         img: '/imgs/toxicTweetsImg.png',
         link: 'https://colab.research.google.com/drive/1L472f5lxBHfFAmlTO7JCpvag9YFuxiwb?usp=sharing',
         bg: 'blue'

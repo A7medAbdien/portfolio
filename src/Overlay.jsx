@@ -1,13 +1,13 @@
-import { logos, data, summary, summary2 } from "../data";
+import { logos, data, summary, summary2, portalContents } from "../data";
 
 export const Card = ({ title, description, children }) => {
     return (
         <>
             <div className="card">
                 <div className="card-title">
-                    <p>
+                    <h2>
                         {title}
-                    </p>
+                    </h2>
                     {description && <small>
                         {description}
                     </small>}
@@ -40,19 +40,38 @@ export function Overlay() {
                 <Card title={"Skills"}>
                     <div className="intro">
                         {data.skills.skills.map(skill =>
-                            <div className="intro-portions tooltip">
-                                <span class="tooltiptext">{skill.toolTip}</span>
-                                <img title="test" src={skill.svg} width={40} alt="" />
+                            <div className="intro-portions">
+                                <div className="tooltip">
+                                    <img src={skill.svg} width={40} alt="" />
+                                    <span class="tooltiptext">{skill.toolTip}</span>
+                                </div>
                             </div>
                         )}
                     </div>
                 </Card>
                 <Card title={"Projects"}>
                     <div className="projects">
-                        {data.skills.skills.map(skill =>
-                            <div className="projects-portions tooltip">
-                                <span class="tooltiptext">{skill.toolTip}</span>
-                                <img title="test" src={skill.svg} width={40} alt="" />
+                        {portalContents.map(project =>
+                            <div className="projects-portions">
+                                <div >
+                                    <div className="project-title">
+                                        <img style={{ display: "inline-block" }} width={30} src={project.img} />
+                                        <p>
+                                            {project.name}
+                                        </p>
+                                    </div>
+                                    <p>
+                                        {project.description}
+                                    </p>
+                                </div>
+                                <div className="project-link">
+                                    <a href="">
+                                        <img width={30} src={project.repo} />
+                                    </a>
+                                    <a href="">
+                                        <img width={30} src={project.img} />
+                                    </a>
+                                </div>
                             </div>
                         )}
                     </div>
