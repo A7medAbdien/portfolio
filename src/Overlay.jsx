@@ -1,10 +1,10 @@
-import { data, summary, summary2 } from "../data";
+import { data } from "../data";
 import { Icon } from "./components/Icon";
 
-const Card = ({ title, description, children }) => {
+const Card = ({ title, description, color, children }) => {
     return (
         <>
-            <div className="card">
+            <div className="card" style={{ backgroundColor: color }}>
                 <div className="card-title">
                     <h2>
                         {title}
@@ -25,7 +25,7 @@ const ProjectCard = ({ name, skills, description, repo, link }) => {
             <div className="projects-portions">
                 <div >
                     <div className="project-title">
-                        {skills.map(skill => <Icon {...skill} />)}
+                        {skills.map(skill => <Icon key={skill.id}  {...skill} />)}
                         <p>
                             {name}
                         </p>
@@ -56,8 +56,8 @@ export function Overlay() {
                         {data.name}
                     </h1>
                 </div >
-                <Card title={summary} description={summary2}>
-                    <div className="intro">
+                <Card title={data.summary} description={data.summary2} color={data.colors.contacts}>
+                    <div className="intro" style={{ backgroundColor: data.colors.contactsF }}>
                         {data.contacts.map((logo, i) =>
                             <div key={i} className="intro-portions">
                                 <Icon {...logo} />
@@ -65,8 +65,8 @@ export function Overlay() {
                         )}
                     </div>
                 </Card>
-                <Card title={"Skills"}>
-                    <div className="intro">
+                <Card title={"Skills"} color={data.colors.skills}>
+                    <div className="intro" style={{ backgroundColor: data.colors.skillsF }}>
                         {data.skills.skills.map((skill, i) =>
                             <div key={i} className="intro-portions">
                                 <Icon {...skill} />
@@ -74,8 +74,8 @@ export function Overlay() {
                         )}
                     </div>
                 </Card>
-                <Card title={"Projects"}>
-                    <div className="projects">
+                <Card title={"Projects"} color={data.colors.projects}>
+                    <div className="projects" style={{ backgroundColor: data.colors.projectsF }}>
                         {data.projects.projects.map((project, i) =>
                             <ProjectCard key={i} {...project} />
                         )}
