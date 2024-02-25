@@ -162,7 +162,7 @@ export const data = {
             },
             {
                 name: 'SafeDistance',
-                description: 'App for Measure the safe distance (2 meters) using the camera phone.',
+                description: "App Measures the distance using phone's camera.",
                 skills: [
                     {
                         id: "Android-SafeDistance",

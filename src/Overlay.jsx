@@ -1,6 +1,7 @@
-import { logos, data, summary, summary2, portalContents } from "../data";
+import { data, summary, summary2 } from "../data";
 import { Icon } from "./components/Icon";
-export const Card = ({ title, description, children }) => {
+
+const Card = ({ title, description, children }) => {
     return (
         <>
             <div className="card">
@@ -18,6 +19,33 @@ export const Card = ({ title, description, children }) => {
     )
 }
 
+const ProjectCard = ({ name, skills, description, repo, link }) => {
+    return (
+        <>
+            <div className="projects-portions">
+                <div >
+                    <div className="project-title">
+                        {skills.map(skill => <Icon {...skill} />)}
+                        <p>
+                            {name}
+                        </p>
+                    </div>
+                    <p>
+                        {description}
+                    </p>
+                </div>
+                <div className="project-link">
+                    {repo && <a href={repo}>
+                        <img width={40} src={data.projects.repoLogo} />
+                    </a>}
+                    {link && <a href={link}>
+                        <img width={40} src={data.projects.linkLogo} />
+                    </a>}
+                </div>
+            </div>
+        </>
+    )
+}
 
 export function Overlay() {
     return (
@@ -48,28 +76,8 @@ export function Overlay() {
                 </Card>
                 <Card title={"Projects"}>
                     <div className="projects">
-                        {portalContents.map(project =>
-                            <div className="projects-portions">
-                                <div >
-                                    <div className="project-title">
-                                        <img style={{ display: "inline-block" }} width={30} src={project.img} />
-                                        <p>
-                                            {project.name}
-                                        </p>
-                                    </div>
-                                    <p>
-                                        {project.description}
-                                    </p>
-                                </div>
-                                <div className="project-link">
-                                    <a href="">
-                                        <img width={30} src={project.repo} />
-                                    </a>
-                                    <a href="">
-                                        <img width={30} src={project.img} />
-                                    </a>
-                                </div>
-                            </div>
+                        {data.projects.projects.map(project =>
+                            <ProjectCard {...project} />
                         )}
                     </div>
                 </Card>
