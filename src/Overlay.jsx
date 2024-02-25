@@ -58,8 +58,8 @@ export function Overlay() {
                 </div >
                 <Card title={summary} description={summary2}>
                     <div className="intro">
-                        {data.contacts.map(logo =>
-                            <div className="intro-portions">
+                        {data.contacts.map((logo, i) =>
+                            <div key={i} className="intro-portions">
                                 <Icon {...logo} />
                             </div>
                         )}
@@ -67,8 +67,8 @@ export function Overlay() {
                 </Card>
                 <Card title={"Skills"}>
                     <div className="intro">
-                        {data.skills.skills.map(skill =>
-                            <div className="intro-portions">
+                        {data.skills.skills.map((skill, i) =>
+                            <div key={i} className="intro-portions">
                                 <Icon {...skill} />
                             </div>
                         )}
@@ -76,8 +76,8 @@ export function Overlay() {
                 </Card>
                 <Card title={"Projects"}>
                     <div className="projects">
-                        {data.projects.projects.map(project =>
-                            <ProjectCard {...project} />
+                        {data.projects.projects.map((project, i) =>
+                            <ProjectCard key={i} {...project} />
                         )}
                     </div>
                 </Card>

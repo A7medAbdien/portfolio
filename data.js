@@ -77,20 +77,26 @@ export const data = {
         linkLogo: '/svg/open-link.svg',
         projects: [
             {
-                name: 'ArtMixer',
-                description: 'A 3D website, that mixes two images.',
+                name: 'Go Restaurant',
+                description: 'Restaurant management system backend.',
                 skills: [
                     {
-                        id: "Vercel-ArtMixer",
-                        place: "top",
+                        id: "Go-Go-Restaurant",
+                        place: "left",
                         img: '/svg/typescript.svg',
-                        text: "Vercel"
+                        text: "Go"
                     },
                     {
-                        id: "Three-ArtMixer",
+                        id: "Gin-Go-Restaurant",
                         place: "top",
                         img: '/svg/typescript.svg',
-                        text: "Three.js"
+                        text: "Gin"
+                    },
+                    {
+                        id: "MongoDB-Go-Restaurant",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "MongoDB"
                     },
                 ],
                 link: 'https://github.com/A7medAbdien/ArtMixer',
@@ -98,56 +104,56 @@ export const data = {
                 bg: 'red'
             },
             {
-                name: 'ArtMixer',
-                description: 'A 3D website, that mixes two images.',
+                name: 'ProShop',
+                description: 'E-commerce website using MERN stack.',
                 skills: [
                     {
-                        id: "Vercel-ArtMixer",
-                        place: "top",
+                        id: "React-ProShop",
+                        place: "left",
                         img: '/svg/typescript.svg',
-                        text: "Vercel"
+                        text: "React"
                     },
                     {
-                        id: "Three-ArtMixer",
+                        id: "MongoDB-ProShop",
                         place: "top",
                         img: '/svg/typescript.svg',
-                        text: "Three.js"
+                        text: "MongoDB"
                     },
                 ],
                 link: 'https://github.com/A7medAbdien/ArtMixer',
                 repo: 'https://github.com/A7medAbdien/ArtMixer',
                 bg: 'red'
             },
+            // {
+            //     name: 'BookStore',
+            //     description: 'E-commerce website using .Net.',
+            //     skills: [
+            //         {
+            //             id: "Vercel-ArtMixer",
+            //             place: "top",
+            //             img: '/svg/typescript.svg',
+            //             text: "Vercel"
+            //         },
+            //         {
+            //             id: "Three-ArtMixer",
+            //             place: "top",
+            //             img: '/svg/typescript.svg',
+            //             text: "Three.js"
+            //         },
+            //     ],
+            //     link: 'https://github.com/A7medAbdien/ArtMixer',
+            //     repo: 'https://github.com/A7medAbdien/ArtMixer',
+            //     bg: 'red'
+            // },
             {
                 name: 'ArtMixer',
                 description: 'A 3D website, that mixes two images.',
                 skills: [
                     {
-                        id: "Vercel-ArtMixer",
+                        id: "React-ArtMixer",
                         place: "top",
                         img: '/svg/typescript.svg',
-                        text: "Vercel"
-                    },
-                    {
-                        id: "Three-ArtMixer",
-                        place: "top",
-                        img: '/svg/typescript.svg',
-                        text: "Three.js"
-                    },
-                ],
-                link: 'https://github.com/A7medAbdien/ArtMixer',
-                repo: 'https://github.com/A7medAbdien/ArtMixer',
-                bg: 'red'
-            },
-            {
-                name: 'ArtMixer',
-                description: 'A 3D website, that mixes two images.',
-                skills: [
-                    {
-                        id: "Vercel-ArtMixer",
-                        place: "top",
-                        img: '/svg/typescript.svg',
-                        text: "Vercel"
+                        text: "React"
                     },
                     {
                         id: "Three-ArtMixer",
@@ -174,7 +180,7 @@ export const data = {
                         id: "Python-SafeDistance",
                         place: "top",
                         img: '/svg/typescript.svg',
-                        text: "Three.js"
+                        text: "Python"
                     },
                 ],
                 link: 'https://github.com/A7medAbdien/safeDistanceProject',
