@@ -1,6 +1,7 @@
 export const data = {
     summary: `I build full stack web applications when I am bored`,
     summary2: `Writing websites and API's since 2020`,
+    end: `built with 🤍 by ahmed.a`,
     name: "Ahmed.A",
     job: "Software Engineer",
     cv: "/pdfs/CV.pdf",
@@ -13,6 +14,7 @@ export const data = {
         projects: "#00000099",
         projectsF: "#7e0f0f66",
         end: "#00000099",
+        endF: "#7e0f0f66",
     },
     contacts: [
         {

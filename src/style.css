@@ -162,6 +162,11 @@ h2 {
     gap: 0.1rem;
 }
 
+.end {
+    width: 100%;
+    padding: 2rem 0 5rem 0;
+}
+
 img {
     transition: transform 0.1 s ease-in-out;
 }

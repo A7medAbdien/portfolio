@@ -35,7 +35,7 @@ export default function Experience() {
 
         {/* <OrbitControls makeDefault /> */}
 
-        <ScrollControls enabled damping={0.35} pages={1.8} >
+        <ScrollControls enabled damping={0.35} pages={1.75} >
             <Scroll>
                 <Portal position={[0, titlePos, 0]}  {...frameProps} id={"r"} name={"Ahmed.A"} >
                     <InnerClouds count={1} />
@@ -48,6 +48,6 @@ export default function Experience() {
             </Scroll>
         </ScrollControls >
 
-        <directionalLight color="#fff" intensity={0.8} position={[0, 0, 3]} />
+        <directionalLight color="#fff" intensity={0.8} position={[0, 0, 4]} />
     </>
 }

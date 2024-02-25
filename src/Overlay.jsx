@@ -82,6 +82,13 @@ export function Overlay() {
                     </div>
                 </Card>
 
+                <div className="card" style={{ backgroundColor: data.colors.end }}>
+                    <div className="end" style={{ backgroundColor: data.colors.endF }}>
+                        <h2>
+                            {data.end}
+                        </h2>
+                    </div>
+                </div >
             </div>
 
         </>
