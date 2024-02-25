@@ -1,5 +1,5 @@
 import { logos, data, summary, summary2, portalContents } from "../data";
-
+import { Icon } from "./components/Icon";
 export const Card = ({ title, description, children }) => {
     return (
         <>
@@ -30,10 +30,10 @@ export function Overlay() {
                 </div >
                 <Card title={summary} description={summary2}>
                     <div className="intro">
-                        {logos.map(logo =>
-                            <a href="dsa" className="intro-portions">
-                                <img src={logo.imgUrl} width={40} alt="" />
-                            </a>
+                        {data.contacts.map(logo =>
+                            <div className="intro-portions">
+                                <Icon {...logo} />
+                            </div>
                         )}
                     </div>
                 </Card>
@@ -41,10 +41,7 @@ export function Overlay() {
                     <div className="intro">
                         {data.skills.skills.map(skill =>
                             <div className="intro-portions">
-                                <div className="tooltip">
-                                    <img src={skill.svg} width={40} alt="" />
-                                    <span class="tooltiptext">{skill.toolTip}</span>
-                                </div>
+                                <Icon {...skill} />
                             </div>
                         )}
                     </div>

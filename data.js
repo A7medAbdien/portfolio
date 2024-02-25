@@ -2,74 +2,185 @@ export const data = {
     name: "Ahmed.A",
     job: "Software Engineer",
     cv: "/pdfs/CV.pdf",
+    contacts: [
+        {
+            id: 'github',
+            place: "top",
+            text: 'A7medAbdien',
+            img: '/imgs/github.png',
+            link: "https://github.com/A7medAbdien"
+        },
+        {
+            id: 'linkedin',
+            place: "top",
+            text: 'linkedin',
+            img: '/imgs/linkedin.png',
+            link: "https://www.linkedin.com/in/ahmed-abdin-90a957187/"
+        },
+        {
+            id: 'whatsapp',
+            place: "top",
+            text: 'Hi ^^',
+            img: '/imgs/whatsapp.png',
+            link: "https://wa.me/97334533638?text=Hi%20Ahmed..."
+        },
+    ],
     skills: {
         title: "Skills", skills: [
             {
-                svg: '/svg/typescript.svg',
-                toolTip: "Typescript"
+                id: "Typescript-icon",
+                place: "top",
+                img: '/svg/typescript.svg',
+                text: "Typescript"
             },
             {
-                svg: '/svg/typescript.svg',
-                toolTip: "React"
+                id: "React-icon",
+                place: "top",
+                img: '/svg/typescript.svg',
+                text: "React"
             },
             {
-                svg: '/svg/typescript.svg',
-                toolTip: "Go"
+                id: "Go-icon",
+                place: "top",
+                img: '/svg/typescript.svg',
+                text: "Go"
             },
             {
-                svg: '/svg/typescript.svg',
-                toolTip: "Gin"
+                id: "Gin-icon",
+                place: "top",
+                img: '/svg/typescript.svg',
+                text: "Gin"
             },
             {
-                svg: '/svg/typescript.svg',
-                toolTip: "MongoDB"
+                id: "MongoDB-icon",
+                place: "top",
+                img: '/svg/typescript.svg',
+                text: "MongoDB"
             },
             {
-                svg: '/svg/typescript.svg',
-                toolTip: "Vercel"
+                id: "Vercel-icon",
+                place: "top",
+                img: '/svg/typescript.svg',
+                text: "Vercel"
             },
             {
-                svg: '/svg/typescript.svg',
-                toolTip: "Three.js"
-            },
-            {
-                svg: '/svg/typescript.svg',
-                toolTip: "Three.js"
+                id: "Three-icon",
+                place: "top",
+                img: '/svg/typescript.svg',
+                text: "Three.js"
             },
         ]
     },
-
     projects: {
         title: "Projects",
         repoLogo: '/svg/github.svg',
         linkLogo: '/svg/open-link.svg',
         projects: [
             {
-                id: '01',
                 name: 'ArtMixer',
                 description: 'A 3D website, that mixes two images.',
                 skills: [
-
+                    {
+                        id: "Vercel-ArtMixer",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Vercel"
+                    },
+                    {
+                        id: "Three-ArtMixer",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Three.js"
+                    },
                 ],
                 link: 'https://github.com/A7medAbdien/ArtMixer',
+                repo: 'https://github.com/A7medAbdien/ArtMixer',
                 bg: 'red'
             },
             {
-                id: '02',
-                name: 'SafeDistance',
-                description: 'App for Measure the safe distance (2 meters) using the camera phone.',
-                vid: '/vids/safeDistanceVid.mp4',
-                link: 'https://github.com/A7medAbdien/safeDistanceProject',
-                bg: 'green'
+                name: 'ArtMixer',
+                description: 'A 3D website, that mixes two images.',
+                skills: [
+                    {
+                        id: "Vercel-ArtMixer",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Vercel"
+                    },
+                    {
+                        id: "Three-ArtMixer",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Three.js"
+                    },
+                ],
+                link: 'https://github.com/A7medAbdien/ArtMixer',
+                repo: 'https://github.com/A7medAbdien/ArtMixer',
+                bg: 'red'
             },
             {
-                id: '03',
-                name: 'ToxicTweets',
-                description: 'Machine learning model that classify positive and negative tweets.',
-                img: '/imgs/toxicTweetsImg.png',
-                link: 'https://colab.research.google.com/drive/1L472f5lxBHfFAmlTO7JCpvag9YFuxiwb?usp=sharing',
-                bg: 'blue'
+                name: 'ArtMixer',
+                description: 'A 3D website, that mixes two images.',
+                skills: [
+                    {
+                        id: "Vercel-ArtMixer",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Vercel"
+                    },
+                    {
+                        id: "Three-ArtMixer",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Three.js"
+                    },
+                ],
+                link: 'https://github.com/A7medAbdien/ArtMixer',
+                repo: 'https://github.com/A7medAbdien/ArtMixer',
+                bg: 'red'
             },
+            {
+                name: 'ArtMixer',
+                description: 'A 3D website, that mixes two images.',
+                skills: [
+                    {
+                        id: "Vercel-ArtMixer",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Vercel"
+                    },
+                    {
+                        id: "Three-ArtMixer",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Three.js"
+                    },
+                ],
+                link: 'https://github.com/A7medAbdien/ArtMixer',
+                repo: 'https://github.com/A7medAbdien/ArtMixer',
+                bg: 'red'
+            },
+            {
+                name: 'SafeDistance',
+                description: 'App for Measure the safe distance (2 meters) using the camera phone.',
+                skills: [
+                    {
+                        id: "Android-SafeDistance",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Vercel"
+                    },
+                    {
+                        id: "Python-SafeDistance",
+                        place: "top",
+                        img: '/svg/typescript.svg',
+                        text: "Three.js"
+                    },
+                ],
+                link: 'https://github.com/A7medAbdien/safeDistanceProject',
+                repo: 'https://github.com/A7medAbdien/ArtMixer',
+                bg: 'green'
+            }
         ]
     }
 }
