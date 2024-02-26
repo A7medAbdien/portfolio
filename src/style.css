@@ -9,35 +9,6 @@ body,
     background: #000000;
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f166;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #7e0f0f66;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #7e0f0f66;
-}
-
-@media only screen and (max-width: 600px) {
-
-    /* width */
-    ::-webkit-scrollbar {
-        display: none;
-    }
-}
-
-
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -67,7 +38,6 @@ p {
 small {
     font-size: 1rem;
 }
-
 
 h1 {
     font-size: 5.5rem;
@@ -173,4 +143,44 @@ img {
 
 img:hover {
     transform: scale(1.2);
+}
+
+/* Media query for screens with a maximum width of 600px */
+@media only screen and (max-width: 600px) {
+    p {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    small {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 5.5rem;
+        font-weight: 300;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 300;
+    }
+
+    .container {
+        top: 20vh;
+        width: 100%;
+        gap: 3rem;
+    }
+
+    .card {
+        width: 95%;
+    }
+
+    .projects-portions {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+    }
 }

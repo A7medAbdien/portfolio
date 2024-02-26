@@ -34,7 +34,7 @@ export default function Experience() {
 
         {/* <OrbitControls makeDefault /> */}
 
-        <ScrollControls enabled damping={0.35} pages={1.75} >
+        <ScrollControls enabled damping={0.35} pages={width < 4.5 ? 1.8 : 1.75} >
             <Scroll>
                 <Portal position={[0, titlePos, 0]}  {...frameProps} id={"r"} name={"Ahmed.A"} >
                     <InnerClouds count={1} />

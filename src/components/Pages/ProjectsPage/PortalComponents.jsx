@@ -29,7 +29,7 @@ export function Portal({ id, name, author, bg = '#f1f1f1', width = 1, height = 1
             </Text>
 
             <mesh name={id} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
-                <roundedPlaneGeometry args={[width, height]} />
+                <roundedPlaneGeometry args={[viewportWidth < 4.5 ? width * 0.8 : width, height]} />
                 <MeshPortalMaterial ref={portal} events={params?.id === id} side={THREE.DoubleSide}>
                     <color attach="background" args={[bg]} />
                     {children}
