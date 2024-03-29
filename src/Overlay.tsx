@@ -15,10 +15,10 @@ const Card: React.FC<CardProps> = ({ title, description, color, children, classN
         <>
             <div className={`${className} card`} style={{ backgroundColor: color }}>
                 <div className="card-title">
-                    <h2 className="text-2xl">
+                    <h2 className="text-4xl">
                         {title}
                     </h2>
-                    {description && <small>
+                    {description && <small className="text-lg">
                         {description}
                     </small>}
                 </div>
@@ -45,11 +45,11 @@ const ProjectCard: React.FC<Project> = ({ name, skills, description, repo, link 
                 <div>
                     <div className="project-title">
                         {skills.map(skill => <Icon key={skill.id} {...skill} />)}
-                        <p className="text-xl font-semibold">
+                        <p className="text-2xl font-semibold">
                             {name}
                         </p>
                     </div>
-                    <p>
+                    <p className="text-xl">
                         {description}
                     </p>
                 </div>
@@ -69,8 +69,8 @@ const ProjectCard: React.FC<Project> = ({ name, skills, description, repo, link 
 export const Overlay: React.FC = () => {
     return (
         <div className="w-full flex flex-col justify-center items-center pt-12 gap-12 overflow-hidden">
-            <div className=" lg:w-[60%] w-[95%] h-52 rounded-[20px] flex justify-center items-center text-5xl font-semibold text-black relative overflow-hidden">
-                <CloudBG camZ={3} lightColor='red' style={
+            <div className=" lg:w-[60%] w-[95%] h-52 rounded-[20px] flex justify-center items-center text-7xl font-medium text-black relative overflow-hidden">
+                <CloudBG camZ={3} lightColor='grey' style={
                     {
                         position: 'absolute',
                         bottom: 0,
@@ -81,8 +81,9 @@ export const Overlay: React.FC = () => {
                         background: "white"
                     }
                 } />
-                <div className="z-10">
+                <div className="z-10 relative">
                     {data.name}
+                    <div className="w-full h-full absolute bg-white/70 top-0 -z-10 blur-lg"></div>
                 </div>
             </div >
             <Card title={data.summary} description={data.summary2} color={data.colors.contacts}>
@@ -113,7 +114,7 @@ export const Overlay: React.FC = () => {
 
             <div className="lg:w-[60%] w-[95%] rounded-t-3xl rounded-b-none card" style={{ backgroundColor: data.colors.end }}>
                 <div className="w-full h-20 text-2xl flex justify-center items-center rounded-t-3xl" style={{ backgroundColor: data.colors.endF }}>
-                    <h2>
+                    <h2 className="text-3xl">
                         {data.end}
                     </h2>
                 </div>
