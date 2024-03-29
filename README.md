@@ -1,12 +1,3 @@
-# PORTFOLIO
+# start up template for react tailwind vite
 
-A simple portfolio
-
-# Instructions
-
-```
-npm i
-
-npm run dev
-
-```
+maybe i need to add the log for what i did
