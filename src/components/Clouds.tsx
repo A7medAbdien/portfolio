@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Cloud } from '@react-three/drei';
+import { Cloud } from '@react-three/drei';
 import { useThree } from '@react-three/fiber';
 import { useControls } from 'leva';
 

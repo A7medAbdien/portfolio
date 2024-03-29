@@ -1,5 +1,5 @@
 import React from "react";
-import { PlacesType, Tooltip } from "react-tooltip";
+import { Tooltip } from "react-tooltip";
 
 interface IconProps {
     id: string;
