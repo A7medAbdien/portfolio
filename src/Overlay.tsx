@@ -68,7 +68,7 @@ const ProjectCard: React.FC<Project> = ({ name, skills, description, repo, link 
 
 export const Overlay: React.FC = () => {
     return (
-        <div className="container pt-12 gap-12 overflow-hidden">
+        <div className="w-full flex flex-col justify-center items-center pt-12 gap-12 overflow-hidden">
             <div className=" lg:w-[60%] w-[95%] h-52 rounded-[20px] flex justify-center items-center text-5xl font-semibold text-black relative overflow-hidden">
                 <CloudBG camZ={3} lightColor='red' style={
                     {
